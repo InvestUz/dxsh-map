@@ -14,45 +14,105 @@
   <style>
     :root {
       color-scheme: light;
-      --fon: #f7f9fc;
-      --панел: #ffffff;
-      --матн: #1b2533;
-      --юмшок: #617186;
-      --чегара: #dbe2ea;
-      --к: #2563eb;
-      --т: #16a34a;
-      --у: #ea580c;
+      --bg: #f3f6fb;
+      --panel: #ffffff;
+      --text: #1b2533;
+      --muted: #617186;
+      --border: #dbe2ea;
+      --primary: #2563eb; /* CSV */
+      --secondary: #16a34a; /* KML */
+      --overlap: #ea580c; /* Both */
+      --radius: 12px;
+      --topbar-h: 64px;
     }
     * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: "Segoe UI", Tahoma, Arial, sans-serif;
-      background: var(--fon);
-      color: var(--матн);
+      background: var(--bg);
+      color: var(--text);
     }
+    .topbar {
+      height: var(--topbar-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--border);
+      background: #ffffff;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    .topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+    .topbar-logo {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      flex: 0 0 auto;
+    }
+    .topbar-title {
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .topbar-subtitle {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 0 0 auto;
+    }
+    .pill {
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--muted);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
     .контейнер {
       display: grid;
-      grid-template-columns: 320px 1fr;
-      min-height: 100vh;
+      grid-template-columns: 340px 1fr;
+      height: calc(100vh - var(--topbar-h));
     }
     .панел {
-      background: var(--панел);
-      border-right: 1px solid var(--чегара);
-      padding: 16px;
+      background: var(--panel);
+      border-right: 1px solid var(--border);
+      padding: 16px 14px;
       overflow-y: auto;
     }
-    .сарлавҳа { margin: 0 0 8px; font-size: 18px; }
-    .изоҳ { margin: 0 0 14px; color: var(--юмшок); font-size: 13px; line-height: 1.45; }
+    .сарлавҳа { margin: 0 0 10px; font-size: 18px; }
+    .изоҳ { margin: 0 0 14px; color: var(--muted); font-size: 13px; line-height: 1.45; }
     .блок {
-      border: 1px solid var(--чегара);
-      border-radius: 10px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
       padding: 10px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       background: #fff;
     }
-    .қатор { display: flex; align-items: center; gap: 8px; margin: 6px 0; font-size: 14px; }
-    .белги { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
-    .stat { margin: 4px 0; font-size: 14px; }
+    .қатор { display: flex; align-items: center; gap: 10px; margin: 8px 0; font-size: 14px; }
+    .белги { width: 12px; height: 12px; border-radius: 3px; display: inline-block; flex: 0 0 auto; }
+    .stat { margin: 6px 0; font-size: 14px; color: var(--text); }
+    .stat-small { font-size: 12px; color: var(--muted); }
     .xato {
       margin-top: 10px;
       color: #b91c1c;
@@ -60,54 +120,88 @@
       line-height: 1.4;
       white-space: pre-wrap;
     }
-    #харита { height: 100vh; width: 100%; }
+    #харита { height: 100%; width: 100%; }
     code { background: #f0f4fa; padding: 1px 6px; border-radius: 6px; }
     .custom-marker { border: none; background: transparent; }
+
+    .btn {
+      width: 100%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--text);
+      font-weight: 600;
+      cursor: pointer;
+      user-select: none;
+    }
+    .btn:hover { background: #fbfcff; }
+    .btn:active { transform: translateY(1px); }
+    .section-title {
+      margin: 0 0 8px;
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 700;
+      letter-spacing: .2px;
+      text-transform: uppercase;
+    }
   </style>
 </head>
 <body>
+  <header class="topbar">
+    <div class="topbar-left">
+      <img
+        class="topbar-logo"
+        src="https://toshkentinvest.uz/assets/frontend/tild6238-3031-4265-a564-343037346231/tic_logo_blue.png"
+        alt="Toshkent Invest"
+      />
+      <div style="min-width:0;">
+        <div class="topbar-title">«Toshkent Invest kompaniyasi» AJ</div>
+        <div class="topbar-subtitle">Ер майдонлари солиштириш харитаси</div>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <div class="pill">Default: Hybrid map</div>
+    </div>
+  </header>
+
   <div class="контейнер">
     <aside class="панел">
-      <h1 class="сарлавҳа">Ер майдонлари солиштириш</h1>
+      <h1 class="сарлавҳа">Харитада солиштириш</h1>
       <p class="изоҳ">
         Манба 1: <b>инвестор маълумотлари</b> (CSV).<br />
         Манба 2: <b>Toshkent Invest company маълумотлари</b> (KML).
       </p>
 
       <div class="блок">
+        <div class="section-title">Қатламлар (полигонлар)</div>
         <div class="қатор">
           <input type="checkbox" id="қатлам-csv" checked />
-          <span class="белги" style="background:#2563eb"></span>
-          <label for="қатлам-csv">Инвестор маълумотлари (CSV)</label>
+          <span class="белги" style="background:var(--primary)"></span>
+          <label for="қатлам-csv">Фақат CSV</label>
         </div>
         <div class="қатор">
           <input type="checkbox" id="қатлам-kml" checked />
-          <span class="белги" style="background:#16a34a"></span>
-          <label for="қатлам-kml">Toshkent Invest company (KML)</label>
+          <span class="белги" style="background:var(--secondary)"></span>
+          <label for="қатлам-kml">Фақат KML</label>
         </div>
         <div class="қатор">
           <input type="checkbox" id="қатлам-умумий" checked />
-          <span class="белги" style="background:#ea580c"></span>
+          <span class="белги" style="background:var(--overlap)"></span>
           <label for="қатлам-умумий">Иккала манбада бор</label>
         </div>
       </div>
 
       <div class="блок">
-        <h3 style="margin:0 0 8px;font-size:14px;">Маркерлар</h3>
-        <div class="қатор">
-          <input type="checkbox" id="маркер-csv" checked />
-          <span class="белги" style="background:#2563eb;border-radius:50%;width:16px;height:16px;"></span>
-          <label for="маркер-csv">CSV маркерлари</label>
-        </div>
-        <div class="қатор">
-          <input type="checkbox" id="маркер-kml" checked />
-          <span class="белги" style="background:#16a34a;border-radius:50%;width:16px;height:16px;"></span>
-          <label for="маркер-kml">KML маркерлари</label>
-        </div>
-        <div class="қатор">
-          <input type="checkbox" id="маркер-умумий" checked />
-          <span class="белги" style="background:#ea580c;border-radius:50%;width:16px;height:16px;"></span>
-          <label for="маркер-умумий">Умумий маркерлар</label>
+        <div class="section-title">Маркерлар (центроид)</div>
+        <div class="қатор" style="margin-top:6px;">
+          <input type="checkbox" id="маркерлар" checked />
+          <span class="белги" style="background:linear-gradient(90deg,var(--primary),var(--overlap));border-radius:50%;width:16px;height:16px;"></span>
+          <label for="маркерлар">Ҳамма маркерларни кўрсатиш</label>
         </div>
       </div>
 
@@ -117,14 +211,12 @@
         <div class="stat">Иккаласида бор: <b id="ikkalasida">0</b></div>
         <div class="stat">Фақат CSV: <b id="faqatCsv">0</b></div>
         <div class="stat">Фақат KML: <b id="faqatKml">0</b></div>
+        <div class="stat-small">Центроидлар масофаси (м) — <b id="distMin">0</b> / <b id="distAvg">0</b> / <b id="distMax">0</b></div>
       </div>
 
-      <div class="блок">
-        <div class="изоҳ" style="margin:0;">
-          Эслатма: бу саҳифа файлларни <code>Elektrzoryadka_Хокимимят_подходящие_локации_.csv</code> ва
-          <code>TOSHKENT_INVEST.kml</code> дан ўқийди.
-        </div>
-      </div>
+    
+
+      <button class="btn" id="fitBtn" type="button">Ҳаммасини кўриш</button>
       <div class="xato" id="xato"></div>
     </aside>
     <main id="харита"></main>
@@ -140,10 +232,40 @@
     const KML_FILE = "TOSHKENT_INVEST.kml";
 
     const map = L.map("харита").setView([41.3111, 69.2797], 11);
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+
+    // Basemap: "Hybrid" (satellite + labels) — QGIS-like default style
+    const streetBase = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       maxZoom: 19,
       attribution: "&copy; OpenStreetMap"
-    }).addTo(map);
+    });
+    const satelliteBase = L.tileLayer(
+      "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+      { maxZoom: 19, attribution: "Tiles © Esri" }
+    );
+    const hybridImagery = L.tileLayer(
+      "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+      { maxZoom: 19, attribution: "Tiles © Esri" }
+    );
+    const hybridLabels = L.tileLayer(
+      "https://server.arcgisonline.com/ArcGIS/rest/services/ReferenceOverlay/MapServer/tile/{z}/{y}/{x}",
+      { maxZoom: 19 }
+    );
+
+    const hybridBase = L.layerGroup([hybridImagery, hybridLabels]);
+
+    hybridBase.addTo(map);
+
+    L.control.layers(
+      {
+        "Hybrid": hybridBase,
+        "Satellite": satelliteBase,
+        "Streets": streetBase
+      },
+      {},
+      { position: "topright", collapsed: true }
+    ).addTo(map);
+
+    L.control.scale({ metric: true, imperial: false, position: "bottomleft" }).addTo(map);
 
     const layerCsv = L.layerGroup().addTo(map);
     const layerKml = L.layerGroup().addTo(map);
@@ -176,6 +298,23 @@
         lngSum += lng;
       }
       return [latSum / coords.length, lngSum / coords.length];
+    }
+
+    function haversineMeters(a, b) {
+      // a/b: [lat, lng] in degrees
+      const toRad = (deg) => (deg * Math.PI) / 180;
+      const R = 6371000; // mean Earth radius (m)
+      const lat1 = toRad(a[0]);
+      const lon1 = toRad(a[1]);
+      const lat2 = toRad(b[0]);
+      const lon2 = toRad(b[1]);
+
+      const dLat = lat2 - lat1;
+      const dLon = lon2 - lon1;
+      const sinDLat = Math.sin(dLat / 2);
+      const sinDLon = Math.sin(dLon / 2);
+      const h = sinDLat * sinDLat + Math.cos(lat1) * Math.cos(lat2) * sinDLon * sinDLon;
+      return 2 * R * Math.asin(Math.sqrt(h));
     }
 
     function parseCsvRows(text) {
@@ -273,6 +412,8 @@
       const onlyCsv = csvRows.filter(r => !kmlMap.has(r.id));
       const onlyKml = kmlRows.filter(r => !csvMap.has(r.id));
 
+      const overlapDistances = [];
+
       for (const r of onlyCsv) {
         const poly = L.polygon(r.coords, { color: "#2563eb", weight: 2, fillOpacity: 0.2 }).bindPopup(popupCsv(r));
         poly.addTo(layerCsv);
@@ -310,24 +451,36 @@
       for (const id of overlapIds) {
         const csv = csvMap.get(id);
         const kml = kmlMap.get(id);
+        const centroidCsv = getCentroid(csv.coords);
+        const centroidKml = getCentroid(kml.coords);
+        const distM = haversineMeters(centroidCsv, centroidKml);
+        overlapDistances.push(distM);
+
         const csvPoly = L.polygon(csv.coords, { color: "#ea580c", weight: 2, dashArray: "4,4", fillOpacity: 0.08 })
-          .bindPopup(`<b>Иккала манбада бор</b><br/>ИД: ${id}<br/>Манзил: ${csv.manzil || "-"}`);
+          .bindPopup(
+            `<b>Иккала манбада бор</b><br/>ИД: ${id}<br/>Манзил (CSV): ${csv.manzil || "-"}<br/>` +
+            `Центроидлар масофаси: ${distM.toFixed(0)} м`
+          );
         const kmlPoly = L.polygon(kml.coords, { color: "#ea580c", weight: 2, fillOpacity: 0.15 })
-          .bindPopup(`<b>Иккала манбада бор</b><br/>ИД: ${id}`);
+          .bindPopup(
+            `<b>Иккала манбада бор</b><br/>ИД: ${id}<br/>Центроидлар масофаси: ${distM.toFixed(0)} м`
+          );
         csvPoly.addTo(layerOverlap);
         kmlPoly.addTo(layerOverlap);
         fitGroup.addLayer(csvPoly);
 
         // Add marker at centroid of CSV polygon
-        const centroid = getCentroid(csv.coords);
-        const marker = L.marker(centroid, {
+        const marker = L.marker(centroidCsv, {
           icon: L.divIcon({
             className: 'custom-marker',
             html: '<div style="background:#ea580c;color:white;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;">B</div>',
             iconSize: [24, 24],
             iconAnchor: [12, 12]
           })
-        }).bindPopup(`<b>Иккала манбада бор</b><br/>ИД: ${id}<br/>Манзил: ${csv.manzil || "-"}`);
+        }).bindPopup(
+          `<b>Иккала манбада бор</b><br/>ИД: ${id}<br/>Манзил (CSV): ${csv.manzil || "-"}<br/>` +
+          `Центроидлар масофаси: ${distM.toFixed(0)} м`
+        );
         marker.addTo(markersOverlap);
       }
 
@@ -337,6 +490,21 @@
       document.getElementById("faqatCsv").textContent = String(onlyCsv.length);
       document.getElementById("faqatKml").textContent = String(onlyKml.length);
 
+      // Distance stats for matches (centroid-to-centroid)
+      if (overlapDistances.length) {
+        const min = Math.min(...overlapDistances);
+        const max = Math.max(...overlapDistances);
+        const sum = overlapDistances.reduce((a, b) => a + b, 0);
+        const avg = sum / overlapDistances.length;
+        document.getElementById("distMin").textContent = min.toFixed(0);
+        document.getElementById("distAvg").textContent = avg.toFixed(0);
+        document.getElementById("distMax").textContent = max.toFixed(0);
+      } else {
+        document.getElementById("distMin").textContent = "0";
+        document.getElementById("distAvg").textContent = "0";
+        document.getElementById("distMax").textContent = "0";
+      }
+
       if (fitGroup.getLayers().length) {
         map.fitBounds(fitGroup.getBounds(), { padding: [20, 20] });
       }
@@ -345,17 +513,33 @@
     function bindLayerToggle(id, layer) {
       const el = document.getElementById(id);
       el.addEventListener("change", () => {
-        if (el.checked) map.addLayer(layer);
-        else map.removeLayer(layer);
+        const currentlyVisible = map.hasLayer(layer);
+        if (el.checked && !currentlyVisible) map.addLayer(layer);
+        if (!el.checked && currentlyVisible) map.removeLayer(layer);
       });
     }
 
     bindLayerToggle("қатлам-csv", layerCsv);
     bindLayerToggle("қатлам-kml", layerKml);
     bindLayerToggle("қатлам-умумий", layerOverlap);
-    bindLayerToggle("маркер-csv", markersCsv);
-    bindLayerToggle("маркер-kml", markersKml);
-    bindLayerToggle("маркер-умумий", markersOverlap);
+
+    // Single toggle for all markers (centroid points)
+    const markersCheckbox = document.getElementById("маркерлар");
+    markersCheckbox.addEventListener("change", () => {
+      const show = markersCheckbox.checked;
+      const markerLayers = [markersCsv, markersKml, markersOverlap];
+      for (const l of markerLayers) {
+        const currentlyVisible = map.hasLayer(l);
+        if (show && !currentlyVisible) map.addLayer(l);
+        if (!show && currentlyVisible) map.removeLayer(l);
+      }
+    });
+
+    document.getElementById("fitBtn").addEventListener("click", () => {
+      if (fitGroup.getLayers().length) {
+        map.fitBounds(fitGroup.getBounds(), { padding: [20, 20] });
+      }
+    });
 
     async function init() {
       try {
