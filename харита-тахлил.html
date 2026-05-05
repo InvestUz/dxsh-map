@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="uz-Cyrl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Маълумотлар солиштириш харитаси</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗺️</text></svg>" />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+  <style>
+    :root {
+      color-scheme: light;
+      --fon: #f7f9fc;
+      --панел: #ffffff;
+      --матн: #1b2533;
+      --юмшок: #617186;
+      --чегара: #dbe2ea;
+      --к: #2563eb;
+      --т: #16a34a;
+      --у: #ea580c;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+      background: var(--fon);
+      color: var(--матн);
+    }
+    .контейнер {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      min-height: 100vh;
+    }
+    .панел {
+      background: var(--панел);
+      border-right: 1px solid var(--чегара);
+      padding: 16px;
+      overflow-y: auto;
+    }
+    .сарлавҳа { margin: 0 0 8px; font-size: 18px; }
+    .изоҳ { margin: 0 0 14px; color: var(--юмшок); font-size: 13px; line-height: 1.45; }
+    .блок {
+      border: 1px solid var(--чегара);
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 10px;
+      background: #fff;
+    }
+    .қатор { display: flex; align-items: center; gap: 8px; margin: 6px 0; font-size: 14px; }
+    .белги { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+    .stat { margin: 4px 0; font-size: 14px; }
+    .xato {
+      margin-top: 10px;
+      color: #b91c1c;
+      font-size: 13px;
+      line-height: 1.4;
+      white-space: pre-wrap;
+    }
+    #харита { height: 100vh; width: 100%; }
+    code { background: #f0f4fa; padding: 1px 6px; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <div class="контейнер">
+    <aside class="панел">
+      <h1 class="сарлавҳа">Ер майдонлари солиштириш</h1>
+      <p class="изоҳ">
+        Манба 1: <b>инвестор маълумотлари</b> (CSV).<br />
+        Манба 2: <b>Toshkent Invest company маълумотлари</b> (KML).
+      </p>
+
+      <div class="блок">
+        <div class="қатор">
+          <input type="checkbox" id="қатлам-csv" checked />
+          <span class="белги" style="background:#2563eb"></span>
+          <label for="қатлам-csv">Инвестор маълумотлари (CSV)</label>
+        </div>
+        <div class="қатор">
+          <input type="checkbox" id="қатлам-kml" checked />
+          <span class="белги" style="background:#16a34a"></span>
+          <label for="қатлам-kml">Toshkent Invest company (KML)</label>
+        </div>
+        <div class="қатор">
+          <input type="checkbox" id="қатлам-умумий" checked />
+          <span class="белги" style="background:#ea580c"></span>
+          <label for="қатлам-умумий">Иккала манбада бор</label>
+        </div>
+      </div>
+
+      <div class="блок">
+        <div class="stat">CSV жами: <b id="jamiCsv">0</b></div>
+        <div class="stat">KML жами: <b id="jamiKml">0</b></div>
+        <div class="stat">Иккаласида бор: <b id="ikkalasida">0</b></div>
+        <div class="stat">Фақат CSV: <b id="faqatCsv">0</b></div>
+        <div class="stat">Фақат KML: <b id="faqatKml">0</b></div>
+      </div>
+
+      <div class="блок">
+        <div class="изоҳ" style="margin:0;">
+          Эслатма: бу саҳифа файлларни <code>Elektrzoryadka_Хокимимят_подходящие_локации_.csv</code> ва
+          <code>TOSHKENT_INVEST.kml</code> дан ўқийди.
+        </div>
+      </div>
+      <div class="xato" id="xato"></div>
+    </aside>
+    <main id="харита"></main>
+  </div>
+
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+  <script>
+    const CSV_FILE = "Elektrzoryadka_Хокимимят_подходящие_локации_.csv";
+    const KML_FILE = "TOSHKENT_INVEST.kml";
+
+    const map = L.map("харита").setView([41.3111, 69.2797], 11);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution: "&copy; OpenStreetMap"
+    }).addTo(map);
+
+    const layerCsv = L.layerGroup().addTo(map);
+    const layerKml = L.layerGroup().addTo(map);
+    const layerOverlap = L.layerGroup().addTo(map);
+
+    const fitGroup = L.featureGroup();
+
+    function setError(text) {
+      document.getElementById("xato").textContent = text || "";
+    }
+
+    function toNumber(raw) {
+      if (raw == null) return null;
+      const cleaned = String(raw).replace(",", ".").replace(/[^\d.\- ]/g, "").trim();
+      if (!cleaned) return null;
+      const first = cleaned.split(/\s+/)[0];
+      const num = Number(first);
+      return Number.isFinite(num) ? num : null;
+    }
+
+    function parseCsvRows(text) {
+      const lines = text.split(/\r?\n/);
+      const rows = [];
+      let active = null;
+
+      for (const line of lines) {
+        if (!line.trim()) continue;
+        const parts = line.split(";").map(v => v.trim());
+        const id = toNumber(parts[0]);
+
+        if (Number.isInteger(id) && id > 0) {
+          const lat = toNumber(parts[4]);
+          const lon = toNumber(parts[5]);
+          active = {
+            id: String(id),
+            tuman: parts[1] || "",
+            mahalla: parts[2] || "",
+            manzil: parts[3] || "",
+            maydon: parts[6] || "",
+            izoh: parts[7] || "",
+            coords: []
+          };
+          if (lat && lon) active.coords.push([lat, lon]);
+          rows.push(active);
+          continue;
+        }
+
+        if (active) {
+          const lat = toNumber(parts[4]);
+          const lon = toNumber(parts[5]);
+          if (lat && lon) active.coords.push([lat, lon]);
+        }
+      }
+
+      return rows.filter(r => r.coords.length >= 3);
+    }
+
+    function parseKml(text) {
+      const xml = new DOMParser().parseFromString(text, "text/xml");
+      const placemarks = Array.from(xml.getElementsByTagName("Placemark"));
+      const result = [];
+
+      for (const p of placemarks) {
+        const nameEl = p.getElementsByTagName("name")[0];
+        const coordEl = p.getElementsByTagName("coordinates")[0];
+        if (!nameEl || !coordEl) continue;
+        const id = nameEl.textContent.trim();
+        const coords = coordEl.textContent
+          .trim()
+          .split(/\s+/)
+          .map(item => {
+            const [lon, lat] = item.split(",");
+            return [toNumber(lat), toNumber(lon)];
+          })
+          .filter(([lat, lon]) => lat && lon);
+
+        if (coords.length >= 3) {
+          result.push({ id, coords });
+        }
+      }
+      return result;
+    }
+
+    function popupCsv(r) {
+      return `
+        <b>Инвестор маълумоти (CSV)</b><br/>
+        ИД: ${r.id}<br/>
+        Туман: ${r.tuman || "-"}<br/>
+        Маҳалла: ${r.mahalla || "-"}<br/>
+        Манзил: ${r.manzil || "-"}<br/>
+        Майдон: ${r.maydon || "-"}<br/>
+        Изоҳ: ${r.izoh || "-"}
+      `;
+    }
+
+    function popupKml(r) {
+      return `<b>Toshkent Invest company (KML)</b><br/>ИД: ${r.id}`;
+    }
+
+    function draw(csvRows, kmlRows) {
+      layerCsv.clearLayers();
+      layerKml.clearLayers();
+      layerOverlap.clearLayers();
+      fitGroup.clearLayers();
+
+      const csvMap = new Map(csvRows.map(r => [r.id, r]));
+      const kmlMap = new Map(kmlRows.map(r => [r.id, r]));
+
+      const overlapIds = new Set([...csvMap.keys()].filter(id => kmlMap.has(id)));
+      const onlyCsv = csvRows.filter(r => !kmlMap.has(r.id));
+      const onlyKml = kmlRows.filter(r => !csvMap.has(r.id));
+
+      for (const r of onlyCsv) {
+        const poly = L.polygon(r.coords, { color: "#2563eb", weight: 2, fillOpacity: 0.2 }).bindPopup(popupCsv(r));
+        poly.addTo(layerCsv);
+        fitGroup.addLayer(poly);
+      }
+      for (const r of onlyKml) {
+        const poly = L.polygon(r.coords, { color: "#16a34a", weight: 2, fillOpacity: 0.2 }).bindPopup(popupKml(r));
+        poly.addTo(layerKml);
+        fitGroup.addLayer(poly);
+      }
+      for (const id of overlapIds) {
+        const csv = csvMap.get(id);
+        const kml = kmlMap.get(id);
+        const csvPoly = L.polygon(csv.coords, { color: "#ea580c", weight: 2, dashArray: "4,4", fillOpacity: 0.08 })
+          .bindPopup(`<b>Иккала манбада бор</b><br/>ИД: ${id}<br/>Манзил: ${csv.manzil || "-"}`);
+        const kmlPoly = L.polygon(kml.coords, { color: "#ea580c", weight: 2, fillOpacity: 0.15 })
+          .bindPopup(`<b>Иккала манбада бор</b><br/>ИД: ${id}`);
+        csvPoly.addTo(layerOverlap);
+        kmlPoly.addTo(layerOverlap);
+        fitGroup.addLayer(csvPoly);
+      }
+
+      document.getElementById("jamiCsv").textContent = String(csvRows.length);
+      document.getElementById("jamiKml").textContent = String(kmlRows.length);
+      document.getElementById("ikkalasida").textContent = String(overlapIds.size);
+      document.getElementById("faqatCsv").textContent = String(onlyCsv.length);
+      document.getElementById("faqatKml").textContent = String(onlyKml.length);
+
+      if (fitGroup.getLayers().length) {
+        map.fitBounds(fitGroup.getBounds(), { padding: [20, 20] });
+      }
+    }
+
+    function bindLayerToggle(id, layer) {
+      const el = document.getElementById(id);
+      el.addEventListener("change", () => {
+        if (el.checked) map.addLayer(layer);
+        else map.removeLayer(layer);
+      });
+    }
+
+    bindLayerToggle("қатлам-csv", layerCsv);
+    bindLayerToggle("қатлам-kml", layerKml);
+    bindLayerToggle("қатлам-умумий", layerOverlap);
+
+    async function init() {
+      try {
+        const [csvResp, kmlResp] = await Promise.all([fetch(CSV_FILE), fetch(KML_FILE)]);
+        if (!csvResp.ok || !kmlResp.ok) {
+          throw new Error("Файлларни ўқишда хатолик бор. Сервер орқали очиб кўринг.");
+        }
+        const [csvText, kmlText] = await Promise.all([csvResp.text(), kmlResp.text()]);
+        const csvRows = parseCsvRows(csvText);
+        const kmlRows = parseKml(kmlText);
+        draw(csvRows, kmlRows);
+      } catch (e) {
+        setError(
+          "Маълумот юкланмади.\n" +
+          "Сабаб: " + (e && e.message ? e.message : "номаълум хатолик") + "\n\n" +
+          "Тавсия: папкада локал сервер ишга туширинг (масалан: python -m http.server 8000)."
+        );
+      }
+    }
+
+    init();
+  </script>
+</body>
+</html>
