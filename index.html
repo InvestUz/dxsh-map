@@ -14,21 +14,23 @@
   <style>
     :root {
       color-scheme: light;
-      --bg: #f3f6fb;
+      --bg: #edf2f8;
       --panel: #ffffff;
-      --text: #1b2533;
-      --muted: #617186;
-      --border: #dbe2ea;
+      --text: #142033;
+      --muted: #5f7188;
+      --border: #d4deea;
       --primary: #2563eb; /* CSV */
       --secondary: #16a34a; /* KML */
       --overlap: #ea580c; /* Both */
-      --radius: 12px;
-      --topbar-h: 64px;
+      --radius: 14px;
+      --topbar-h: 70px;
+      --panel-shadow: 0 8px 28px rgba(18, 38, 70, 0.08);
+      --soft-shadow: 0 3px 12px rgba(25, 47, 86, 0.08);
     }
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+      font-family: "Inter", "Segoe UI", Tahoma, Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
     }
@@ -39,11 +41,12 @@
       justify-content: space-between;
       gap: 16px;
       padding: 10px 16px;
-      border-bottom: 1px solid var(--border);
-      background: #ffffff;
+      border-bottom: 1px solid #cfd9e7;
+      background: linear-gradient(180deg, #f7f9fc, #eef3fa);
       position: sticky;
       top: 0;
       z-index: 999;
+      box-shadow: 0 3px 10px rgba(22, 38, 65, 0.08);
     }
     .topbar-left {
       display: flex;
@@ -56,9 +59,10 @@
       height: 42px;
       object-fit: contain;
       flex: 0 0 auto;
+      filter: drop-shadow(0 2px 4px rgba(37, 99, 235, 0.2));
     }
     .topbar-title {
-      font-weight: 700;
+      font-weight: 800;
       font-size: 14px;
       line-height: 1.2;
       white-space: nowrap;
@@ -80,39 +84,74 @@
       flex: 0 0 auto;
     }
     .pill {
-      border: 1px solid var(--border);
-      background: #fff;
-      color: var(--muted);
-      padding: 6px 10px;
+      border: 1px solid #cde0ff;
+      background: linear-gradient(180deg, #ffffff, #eff5ff);
+      color: #345687;
+      padding: 7px 12px;
       border-radius: 999px;
       font-size: 12px;
+      font-weight: 600;
       white-space: nowrap;
+      box-shadow: var(--soft-shadow);
     }
 
     .контейнер {
       display: grid;
-      grid-template-columns: 340px 1fr;
+      grid-template-columns: 390px 1fr;
       height: calc(100vh - var(--topbar-h));
     }
     .панел {
-      background: var(--panel);
-      border-right: 1px solid var(--border);
-      padding: 16px 14px;
+      background: linear-gradient(180deg, #fbfdff, #f4f8fc);
+      border-right: 1px solid rgba(212, 222, 234, 0.9);
+      padding: 16px;
       overflow-y: auto;
     }
-    .сарлавҳа { margin: 0 0 10px; font-size: 18px; }
-    .изоҳ { margin: 0 0 14px; color: var(--muted); font-size: 13px; line-height: 1.45; }
+    .сарлавҳа {
+      margin: 0 0 10px;
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.2px;
+    }
+    .изоҳ { margin: 0 0 14px; color: var(--muted); font-size: 13px; line-height: 1.5; }
     .блок {
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 10px;
+      padding: 12px;
       margin-bottom: 12px;
-      background: #fff;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: var(--soft-shadow);
+    }
+    .panel-window-title {
+      margin: 0 0 10px;
+      border: 1px solid #d8e2ee;
+      border-radius: 10px;
+      background: linear-gradient(180deg, #fbfdff, #eef4fc);
+      padding: 8px 10px;
+      font-size: 12px;
+      color: #476283;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .25px;
     }
     .қатор { display: flex; align-items: center; gap: 10px; margin: 8px 0; font-size: 14px; }
     .белги { width: 12px; height: 12px; border-radius: 3px; display: inline-block; flex: 0 0 auto; }
-    .stat { margin: 6px 0; font-size: 14px; color: var(--text); }
-    .stat-small { font-size: 12px; color: var(--muted); }
+    .stat {
+      margin: 7px 0;
+      font-size: 14px;
+      color: var(--text);
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px dashed #e5ebf2;
+    }
+    .stat:last-child { border-bottom: 0; padding-bottom: 0; }
+    .stat-small {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 8px;
+      line-height: 1.5;
+    }
     .xato {
       margin-top: 10px;
       color: #b91c1c;
@@ -120,7 +159,11 @@
       line-height: 1.4;
       white-space: pre-wrap;
     }
-    #харита { height: 100%; width: 100%; }
+    #харита {
+      height: 100%;
+      width: 100%;
+      border-left: 1px solid rgba(212, 222, 234, 0.7);
+    }
     code { background: #f0f4fa; padding: 1px 6px; border-radius: 6px; }
     .custom-marker { border: none; background: transparent; }
 
@@ -132,14 +175,18 @@
       gap: 10px;
       padding: 10px 12px;
       border-radius: var(--radius);
-      border: 1px solid var(--border);
-      background: #fff;
-      color: var(--text);
-      font-weight: 600;
+      border: 1px solid #2f62d4;
+      background: linear-gradient(180deg, #3a75ff, #2759cf);
+      color: #fff;
+      font-weight: 700;
       cursor: pointer;
       user-select: none;
+      box-shadow: 0 8px 18px rgba(37, 99, 235, 0.28);
     }
-    .btn:hover { background: #fbfcff; }
+    .btn:hover {
+      filter: brightness(1.03);
+      transform: translateY(-1px);
+    }
     .btn:active { transform: translateY(1px); }
     .section-title {
       margin: 0 0 8px;
@@ -148,6 +195,94 @@
       font-weight: 700;
       letter-spacing: .2px;
       text-transform: uppercase;
+    }
+    .input,
+    .select {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 8px 10px;
+      font-size: 13px;
+      color: var(--text);
+      background: #fff;
+      outline: none;
+      transition: border-color .15s ease, box-shadow .15s ease;
+    }
+    .input:focus,
+    .select:focus {
+      border-color: #79a8ff;
+      box-shadow: 0 0 0 3px rgba(58, 117, 255, 0.15);
+    }
+    .filter-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .filter-full {
+      grid-column: 1 / -1;
+    }
+    .filter-actions {
+      margin-top: 8px;
+      display: flex;
+      gap: 8px;
+    }
+    .btn-small {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 8px;
+      background: linear-gradient(180deg, #ffffff, #f3f6fb);
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .btn-small:hover { filter: brightness(0.98); }
+
+    input[type="checkbox"] {
+      accent-color: #2f6ef8;
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+    label { cursor: pointer; }
+
+    .leaflet-control-layers,
+    .leaflet-control-zoom,
+    .leaflet-control-scale {
+      border: 1px solid #d6e2f1 !important;
+      box-shadow: var(--panel-shadow) !important;
+      border-radius: 10px !important;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(4px);
+    }
+    .leaflet-control-layers-expanded {
+      padding: 10px 12px;
+    }
+    .leaflet-popup-content-wrapper {
+      border-radius: 12px;
+      box-shadow: 0 14px 30px rgba(10, 24, 45, 0.2);
+    }
+    .leaflet-popup-content {
+      margin: 12px 14px;
+      line-height: 1.5;
+      font-size: 13px;
+    }
+    @media (max-width: 1080px) {
+      .контейнер {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        height: auto;
+        min-height: calc(100vh - var(--topbar-h));
+      }
+      .панел {
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+      }
+      #харита {
+        min-height: 62vh;
+        border-left: 0;
+      }
     }
   </style>
 </head>
@@ -160,17 +295,18 @@
         alt="Toshkent Invest"
       />
       <div style="min-width:0;">
-        <div class="topbar-title">«Toshkent Invest kompaniyasi» AJ</div>
-        <div class="topbar-subtitle">Ер майдонлари солиштириш харитаси</div>
+        <div class="topbar-title">Toshkent Invest GIS — QGIS style project</div>
+        <div class="topbar-subtitle">Real dataset tools only</div>
       </div>
     </div>
     <div class="topbar-right">
-      <div class="pill">Default: Hybrid map</div>
+      <div class="pill">Hybrid map</div>
     </div>
   </header>
 
   <div class="контейнер">
     <aside class="панел">
+      <div class="panel-window-title">Browser / Layers Panel</div>
       <h1 class="сарлавҳа">Харитада солиштириш</h1>
       <p class="изоҳ">
         Манба 1: <b>инвестор маълумотлари</b> (CSV).<br />
@@ -206,6 +342,40 @@
       </div>
 
       <div class="блок">
+        <div class="section-title">Қидирув ва фильтрлар</div>
+        <div class="filter-grid">
+          <input class="input filter-full" id="searchText" type="text" placeholder="ИД, туман, маҳалла, манзил..." />
+          <select class="select" id="sourceType">
+            <option value="all">Ҳаммаси</option>
+            <option value="both">Иккала манбада бор</option>
+            <option value="csv_only">Фақат CSV</option>
+            <option value="kml_only">Фақат KML</option>
+          </select>
+          <input class="input" id="searchId" type="text" placeholder="ИД" />
+
+          <select class="select" id="tumanFilter">
+            <option value="">Туман (ҳаммаси)</option>
+          </select>
+          <select class="select" id="mahallaFilter">
+            <option value="">Маҳалла (ҳаммаси)</option>
+          </select>
+
+          <input class="input" id="latMin" type="number" step="any" placeholder="Lat min" />
+          <input class="input" id="latMax" type="number" step="any" placeholder="Lat max" />
+          <input class="input" id="lngMin" type="number" step="any" placeholder="Lng min" />
+          <input class="input" id="lngMax" type="number" step="any" placeholder="Lng max" />
+
+          <input class="input" id="distMinFilter" type="number" step="any" placeholder="Масофа min (м)" />
+          <input class="input" id="distMaxFilter" type="number" step="any" placeholder="Масофа max (м)" />
+          <input class="input" id="areaMinFilter" type="number" step="any" placeholder="Майдон min" />
+          <input class="input" id="areaMaxFilter" type="number" step="any" placeholder="Майдон max" />
+        </div>
+        <div class="filter-actions">
+          <button class="btn-small" type="button" id="clearFilters">Тозалаш</button>
+        </div>
+      </div>
+
+      <div class="блок">
         <div class="stat">CSV жами: <b id="jamiCsv">0</b></div>
         <div class="stat">KML жами: <b id="jamiKml">0</b></div>
         <div class="stat">Иккаласида бор: <b id="ikkalasida">0</b></div>
@@ -231,7 +401,7 @@
     const CSV_FILE = "Elektrzoryadka_Хокимимят_подходящие_локации_.csv";
     const KML_FILE = "TOSHKENT_INVEST.kml";
 
-    const map = L.map("харита").setView([41.3111, 69.2797], 11);
+    const map = L.map("харита", { preferCanvas: true }).setView([41.3111, 69.2797], 11);
 
     // Basemap: "Hybrid" (satellite + labels) — QGIS-like default style
     const streetBase = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -277,6 +447,8 @@
     const markersOverlap = L.layerGroup().addTo(map);
 
     const fitGroup = L.featureGroup();
+    let allCsvRows = [];
+    let allKmlRows = [];
 
     function setError(text) {
       document.getElementById("xato").textContent = text || "";
@@ -336,6 +508,7 @@
             mahalla: parts[2] || "",
             manzil: parts[3] || "",
             maydon: parts[6] || "",
+            maydonNum: toNumber(parts[6]),
             izoh: parts[7] || "",
             coords: []
           };
@@ -351,7 +524,20 @@
         }
       }
 
-      return rows.filter(r => r.coords.length >= 3);
+      return rows
+        .filter(r => r.coords.length >= 3)
+        .map(r => ({
+          ...r,
+          centroid: getCentroid(r.coords),
+          searchText: [
+            r.id,
+            r.tuman,
+            r.mahalla,
+            r.manzil,
+            r.maydon,
+            r.izoh
+          ].join(" ").toLowerCase()
+        }));
     }
 
     function parseKml(text) {
@@ -374,10 +560,120 @@
           .filter(([lat, lon]) => lat && lon);
 
         if (coords.length >= 3) {
-          result.push({ id, coords });
+          result.push({
+            id,
+            coords,
+            centroid: getCentroid(coords),
+            searchText: String(id).toLowerCase()
+          });
         }
       }
       return result;
+    }
+
+    function fillSelect(selectId, values, defaultLabel) {
+      const el = document.getElementById(selectId);
+      el.innerHTML = "";
+      const defaultOption = document.createElement("option");
+      defaultOption.value = "";
+      defaultOption.textContent = defaultLabel;
+      el.appendChild(defaultOption);
+      values.forEach((value) => {
+        const option = document.createElement("option");
+        option.value = value;
+        option.textContent = value;
+        el.appendChild(option);
+      });
+    }
+
+    function getFilterValue(id) {
+      return document.getElementById(id).value;
+    }
+
+    function getFilterNumber(id) {
+      const value = toNumber(getFilterValue(id));
+      return value == null ? null : value;
+    }
+
+    function getFilterState() {
+      return {
+        searchText: getFilterValue("searchText").trim().toLowerCase(),
+        searchId: getFilterValue("searchId").trim(),
+        sourceType: getFilterValue("sourceType"),
+        tuman: getFilterValue("tumanFilter").trim(),
+        mahalla: getFilterValue("mahallaFilter").trim(),
+        latMin: getFilterNumber("latMin"),
+        latMax: getFilterNumber("latMax"),
+        lngMin: getFilterNumber("lngMin"),
+        lngMax: getFilterNumber("lngMax"),
+        distMin: getFilterNumber("distMinFilter"),
+        distMax: getFilterNumber("distMaxFilter"),
+        areaMin: getFilterNumber("areaMinFilter"),
+        areaMax: getFilterNumber("areaMaxFilter")
+      };
+    }
+
+    function withinRange(value, min, max) {
+      if (value == null) return false;
+      if (min != null && value < min) return false;
+      if (max != null && value > max) return false;
+      return true;
+    }
+
+    function applyFilters(csvRows, kmlRows) {
+      const filters = getFilterState();
+      const csvMap = new Map(csvRows.map((r) => [r.id, r]));
+      const kmlMap = new Map(kmlRows.map((r) => [r.id, r]));
+      const allIds = new Set([...csvMap.keys(), ...kmlMap.keys()]);
+      const allowedIds = new Set();
+
+      for (const id of allIds) {
+        const csv = csvMap.get(id);
+        const kml = kmlMap.get(id);
+        const hasCsv = Boolean(csv);
+        const hasKml = Boolean(kml);
+        const sourceType = hasCsv && hasKml ? "both" : hasCsv ? "csv_only" : "kml_only";
+
+        if (filters.sourceType !== "all" && filters.sourceType !== sourceType) continue;
+        if (filters.searchId && !String(id).includes(filters.searchId)) continue;
+
+        const combinedSearch = [csv ? csv.searchText : "", kml ? kml.searchText : "", sourceType].join(" ");
+        if (filters.searchText && !combinedSearch.includes(filters.searchText)) continue;
+
+        if (filters.tuman && (!csv || csv.tuman !== filters.tuman)) continue;
+        if (filters.mahalla && (!csv || csv.mahalla !== filters.mahalla)) continue;
+
+        const centroid = csv ? csv.centroid : kml ? kml.centroid : null;
+        if (filters.latMin != null || filters.latMax != null) {
+          if (!centroid || !withinRange(centroid[0], filters.latMin, filters.latMax)) continue;
+        }
+        if (filters.lngMin != null || filters.lngMax != null) {
+          if (!centroid || !withinRange(centroid[1], filters.lngMin, filters.lngMax)) continue;
+        }
+
+        if (filters.areaMin != null || filters.areaMax != null) {
+          const area = csv ? csv.maydonNum : null;
+          if (!withinRange(area, filters.areaMin, filters.areaMax)) continue;
+        }
+
+        if (filters.distMin != null || filters.distMax != null) {
+          if (!(hasCsv && hasKml)) continue;
+          const dist = haversineMeters(csv.centroid, kml.centroid);
+          if (!withinRange(dist, filters.distMin, filters.distMax)) continue;
+        }
+
+        allowedIds.add(id);
+      }
+
+      return {
+        csvRows: csvRows.filter((r) => allowedIds.has(r.id)),
+        kmlRows: kmlRows.filter((r) => allowedIds.has(r.id))
+      };
+    }
+
+    function redrawWithFilters() {
+      const filtered = applyFilters(allCsvRows, allKmlRows);
+      draw(filtered.csvRows, filtered.kmlRows);
     }
 
     function popupCsv(r) {
@@ -541,6 +837,60 @@
       }
     });
 
+    function setupFilterUi(csvRows) {
+      const tumanSet = new Set();
+      const mahallaSet = new Set();
+      csvRows.forEach((r) => {
+        if (r.tuman) tumanSet.add(r.tuman);
+        if (r.mahalla) mahallaSet.add(r.mahalla);
+      });
+      fillSelect("tumanFilter", [...tumanSet].sort((a, b) => a.localeCompare(b)), "Туман (ҳаммаси)");
+      fillSelect("mahallaFilter", [...mahallaSet].sort((a, b) => a.localeCompare(b)), "Маҳалла (ҳаммаси)");
+
+      const filterIds = [
+        "searchText",
+        "searchId",
+        "sourceType",
+        "tumanFilter",
+        "mahallaFilter",
+        "latMin",
+        "latMax",
+        "lngMin",
+        "lngMax",
+        "distMinFilter",
+        "distMaxFilter",
+        "areaMinFilter",
+        "areaMaxFilter"
+      ];
+
+      const debouncedRedraw = (() => {
+        let timer = null;
+        return () => {
+          if (timer) clearTimeout(timer);
+          timer = setTimeout(() => redrawWithFilters(), 150);
+        };
+      })();
+
+      filterIds.forEach((id) => {
+        const el = document.getElementById(id);
+        const evt = el.tagName === "SELECT" ? "change" : "input";
+        el.addEventListener(evt, debouncedRedraw);
+      });
+
+      document.getElementById("clearFilters").addEventListener("click", () => {
+        filterIds.forEach((id) => {
+          const el = document.getElementById(id);
+          if (el.tagName === "SELECT") {
+            el.value = "";
+            if (id === "sourceType") el.value = "all";
+          } else {
+            el.value = "";
+          }
+        });
+        redrawWithFilters();
+      });
+    }
+
     async function init() {
       try {
         const [csvResp, kmlResp] = await Promise.all([fetch(CSV_FILE), fetch(KML_FILE)]);
@@ -548,9 +898,10 @@
           throw new Error("Файлларни ўқишда хатолик бор. Сервер орқали очиб кўринг.");
         }
         const [csvText, kmlText] = await Promise.all([csvResp.text(), kmlResp.text()]);
-        const csvRows = parseCsvRows(csvText);
-        const kmlRows = parseKml(kmlText);
-        draw(csvRows, kmlRows);
+        allCsvRows = parseCsvRows(csvText);
+        allKmlRows = parseKml(kmlText);
+        setupFilterUi(allCsvRows);
+        redrawWithFilters();
       } catch (e) {
         setError(
           "Маълумот юкланмади.\n" +
