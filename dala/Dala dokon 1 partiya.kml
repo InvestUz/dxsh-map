@@ -1,0 +1,2043 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document id="1fQbs5XlepQ8VG3cUuxYBOz2LEGoAbTUA">
+	<name>Dala dokon</name>
+	<gx:CascadingStyle kml:id="__managed_style_03460625283F558A9620_normal">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2f2fd3</color>
+				<width>4</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_03460625283F558A9620">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_03460625283F558A9620_normal</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_03460625283F558A9620_highlight</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_0F9CFD1C093F558A961F_normal">
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>4</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_03460625283F558A9620_highlight">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2f2fd3</color>
+				<width>6</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_0F9CFD1C093F558A961F_highlight">
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>6</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_0F9CFD1C093F558A961F">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_0F9CFD1C093F558A961F_normal</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_0F9CFD1C093F558A961F_highlight</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Placemark id="0010BF0A473F281230C3">
+		<name>Mirobod 1</name>
+		<LookAt>
+			<longitude>69.30041251203954</longitude>
+			<latitude>41.27584070641164</latitude>
+			<altitude>436.068700900907</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>417.161373104027</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Polygon>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						69.29995089351519,41.27571038133614,0 69.30010270643821,41.27559911044318,0 69.30020425488422,41.27568034903032,0 69.3000442214427,41.27578807571378,0 69.29995089351519,41.27571038133614,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+	<Placemark id="0C691328993F2812CC54">
+		<name>Mirobod 2 Eko </name>
+		<visibility>0</visibility>
+		<LookAt>
+			<longitude>69.30861113574743</longitude>
+			<latitude>41.27429556200582</latitude>
+			<altitude>437.9537997458791</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>132.6850927748638</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_03460625283F558A9620</styleUrl>
+		<Polygon>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						69.308498443161,41.27427918222902,0 69.30854675919359,41.27421554735723,0 69.30883237003563,41.27429714999192,0 69.30877657127088,41.27437584648846,0 69.308498443161,41.27427918222902,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+	<Placemark id="07F9B3E0963F2814C2A3">
+		<name>Mirobod 3</name>
+		<LookAt>
+			<longitude>69.3099410358015</longitude>
+			<latitude>41.25196397193025</latitude>
+			<altitude>429.1271092377546</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>105.9228111317134</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Polygon>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						69.30995159181374,41.25200462707549,0 69.30994653169327,41.25185139646593,0 69.31011351114603,41.25185106400799,0 69.31010914092778,41.25200263640856,0 69.30995159181374,41.25200462707549,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+	<Placemark id="09DBF796513F281614EB">
+		<name>Mirobod 4 Mirobod hokimyat</name>
+		<visibility>0</visibility>
+		<LookAt>
+			<longitude>69.31596598329723</longitude>
+			<latitude>41.24764759396054</latitude>
+			<altitude>429.1216833410905</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>162.968306714356</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_03460625283F558A9620</styleUrl>
+		<Polygon>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						69.31580523802016,41.24765444774486,0 69.31588347321447,41.24748142186977,0 69.31601072460123,41.24751296334892,0 69.31593150523013,41.2476906589613,0 69.31580523802016,41.24765444774486,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+	<Placemark id="0AB255EB8F3F2817E464">
+		<name>M Ulugbek 1</name>
+		<LookAt>
+			<longitude>69.32979618649537</longitude>
+			<latitude>41.33421287431957</latitude>
+			<altitude>477.733981784159</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>149.3038603014065</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Polygon>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						69.32977527666252,41.33405668131084,0 69.32995836778927,41.3342281979421,0 69.32988869994028,41.33426896788115,0 69.32970029637789,41.33409989183834,0 69.32977527666252,41.33405668131084,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+	<Placemark id="02CED9CD383F281A73D4">
+		<name>M ulugbek 2</name>
+		<LookAt>
+			<longitude>69.36732022319454</longitude>
+			<latitude>41.36163028637593</latitude>
+			<altitude>505.4074928016228</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>253.3584178591264</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_03460625283F558A9620</styleUrl>
+		<Polygon>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						69.36737707806346,41.3617057257449,0 69.36736174729444,41.36160442763124,0 69.36758876958878,41.36158158160009,0 69.36760149363039,41.36165621233958,0 69.36755478815492,41.36169281509003,0 69.36737707806346,41.3617057257449,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+	<Placemark id="09BF27263E3F281BD011">
+		<name>M ulugbek 3</name>
+		<LookAt>
+			<longitude>69.36835630154513</longitude>
+			<latitude>41.34955547493518</latitude>
+			<altitude>509.3985688020571</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>188.6492258705767</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Polygon>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						69.36818981696344,41.3494683386128,0 69.3682983476161,41.34939492574438,0 69.36844604467802,41.34949430002943,0 69.36833744220888,41.34958040585312,0 69.36818981696344,41.3494683386128,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+	<Placemark id="054E73429F3F281EF1D4">
+		<name>M ulugbek 4</name>
+		<LookAt>
+			<longitude>69.39290268588579</longitude>
+			<latitude>41.36106741483292</latitude>
+			<altitude>499.3853816009349</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>95.74446687766796</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Polygon>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						69.39277784298015,41.36103799008752,0 69.39292525645358,41.36096858944056,0 69.39302871325462,41.36107489414542,0 69.39286786589311,41.3611432743193,0 69.39277784298015,41.36103799008752,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+	<Placemark id="0E46F1E70A3F2820BD00">
+		<name>Olmazor 1</name>
+		<LookAt>
+			<longitude>69.21838421168395</longitude>
+			<latitude>41.35623480987984</latitude>
+			<altitude>432.9923494918529</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>114.55927138275</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Polygon>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						69.21830552701925,41.35625094886753,0 69.21823414061136,41.35616303234471,0 69.21841082028236,41.35608363581181,0 69.21850219520805,41.3561624063758,0 69.21830552701925,41.35625094886753,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+	<Placemark id="0568779E213F28217CC0">
+		<name>Olmazor 2</name>
+		<LookAt>
+			<longitude>69.23304834786038</longitude>
+			<latitude>41.35512050573006</latitude>
+			<altitude>438.5389575986495</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>147.2898659826387</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Polygon>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						69.23299430074084,41.35491809962396,0 69.2331234904096,41.35497024106179,0 69.23305305544673,41.35510239538794,0 69.23290549653906,41.355053598641,0 69.23299430074084,41.35491809962396,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+	<Placemark id="0C971397FC3F2822C5A7">
+		<name>Olmazor 3</name>
+		<LookAt>
+			<longitude>69.25353073910527</longitude>
+			<latitude>41.34858449032321</latitude>
+			<altitude>447.3139510358467</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>132.5040061910659</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Polygon>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						69.25348338435985,41.34846939189842,0 69.25363440604841,41.34849832876112,0 69.25358723959559,41.34863605044831,0 69.25344015571231,41.34860915899989,0 69.25348338435985,41.34846939189842,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+	<Placemark id="01F7A1C9593F2823CC87">
+		<name>Sergeli 1</name>
+		<LookAt>
+			<longitude>69.24367399521974</longitude>
+			<latitude>41.21913508964216</latitude>
+			<altitude>400.7640736265989</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>222.1545085514663</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Polygon>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						69.24359159416588,41.2190177276483,0 69.24371924383888,41.21902157587278,0 69.2436943834165,41.21919646623942,0 69.24355274602259,41.21918437900761,0 69.24359159416588,41.2190177276483,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+	<Placemark id="039A2F33EF3F2824C174">
+		<name>Sergeli 2</name>
+		<LookAt>
+			<longitude>69.26731605521482</longitude>
+			<latitude>41.23237834688951</latitude>
+			<altitude>410.3272606176404</altitude>
+			<heading>354.3170788288496</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>141.7007269626265</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Polygon>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						69.26734400773778,41.23241586378236,0 69.267297097625,41.23224284582978,0 69.26740295165872,41.23222343643963,0 69.26746605250798,41.23242371980997,0 69.26740665508891,41.23242697072999,0 69.26734400773778,41.23241586378236,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+	<Placemark id="0AEC274C8E3F282744EC">
+		<name>Shayxontoxur 1</name>
+		<visibility>0</visibility>
+		<LookAt>
+			<longitude>69.19333306729453</longitude>
+			<latitude>41.32468946818753</latitude>
+			<altitude>427.2159550930163</altitude>
+			<heading>359.8230064901709</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>143.8706138146881</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_03460625283F558A9620</styleUrl>
+		<Polygon>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						69.19326924535733,41.32468586324928,0 69.19324333836059,41.32455270834949,0 69.19339984244597,41.32452978215294,0 69.19343778227473,41.32466510612714,0 69.19326924535733,41.32468586324928,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+	<Placemark id="04CEC4BCF13F2828F238">
+		<name>Shayxontoxur 2</name>
+		<visibility>0</visibility>
+		<LookAt>
+			<longitude>69.21649662599124</longitude>
+			<latitude>41.30796616316941</latitude>
+			<altitude>418.6149675664768</altitude>
+			<heading>359.9983112765428</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>120.6981251155776</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_03460625283F558A9620</styleUrl>
+		<Polygon>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						69.21607543461859,41.30798547412643,0 69.21625190350265,41.30788592373998,0 69.21636097462826,41.30795907228207,0 69.21621419275775,41.30805920485694,0 69.21607543461859,41.30798547412643,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+	<Placemark id="0C4D970BE03F282A0E70">
+		<name>shayxontoxur 3</name>
+		<visibility>0</visibility>
+		<LookAt>
+			<longitude>69.25295526579607</longitude>
+			<latitude>41.3283217666492</latitude>
+			<altitude>440.1129037701367</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>127.5381591730365</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_03460625283F558A9620</styleUrl>
+		<Polygon>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						69.25287422614925,41.328350870676,0 69.25297916087888,41.32822244997233,0 69.25308570285171,41.32828846464907,0 69.25297211219569,41.32844066935343,0 69.25287422614925,41.328350870676,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+	<Placemark id="061D887CCA3F282BECB8">
+		<name>yangixayot 1</name>
+		<LookAt>
+			<longitude>69.19242236658813</longitude>
+			<latitude>41.23169545576803</latitude>
+			<altitude>394.933276879434</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>236.5948019253847</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Polygon>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						69.19234208750107,41.231523474643,0 69.19252733672344,41.23169260938946,0 69.19244502077554,41.23174585699881,0 69.1922559792019,41.23156392499918,0 69.19234208750107,41.231523474643,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+	<Placemark id="0991E203CB3F282D203C">
+		<name>Yangixayot 2</name>
+		<LookAt>
+			<longitude>69.20969321222539</longitude>
+			<latitude>41.21678714109083</latitude>
+			<altitude>391.2841415627115</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>206.5210787177057</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Polygon>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						69.20972039720803,41.21663585962118,0 69.20984372106618,41.21667076881424,0 69.20974595019928,41.2168472665422,0 69.20963712004705,41.21680637626221,0 69.20972039720803,41.21663585962118,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+	<Placemark id="09C335EB403F282F9504">
+		<name>Yangixayot 3</name>
+		<LookAt>
+			<longitude>69.21768916714717</longitude>
+			<latitude>41.20469498883795</latitude>
+			<altitude>391.5785400600868</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>141.0223302181658</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Polygon>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						69.2176818481153,41.20465091286353,0 69.2177772626776,41.20452553194691,0 69.21792866408624,41.20458504006498,0 69.21782262914591,41.20470177127969,0 69.2176818481153,41.20465091286353,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+	<Placemark id="0EDF8DBCCE3F2836351C">
+		<name>Yashnobod 1</name>
+		<LookAt>
+			<longitude>69.35568384909621</longitude>
+			<latitude>41.2975772105639</latitude>
+			<altitude>458.6159170096419</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>152.6554107016273</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Polygon>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						69.35569665494396,41.29755154092707,0 69.35560417346451,41.29741993699638,0 69.35575389497122,41.29736934416325,0 69.35580325316255,41.29747972230376,0 69.35577225014757,41.29753229904301,0 69.35569665494396,41.29755154092707,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+	<Placemark id="0DD45660BC3F28355700">
+		<name>Yashnobod 2</name>
+		<LookAt>
+			<longitude>69.30642414983626</longitude>
+			<latitude>41.30649719346815</latitude>
+			<altitude>458.8380409208763</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>159.0062583469989</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Polygon>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						69.30653014391552,41.30652199914683,0 69.30640187363906,41.30641874217178,0 69.30651886952249,41.30635098942737,0 69.30666432478441,41.3064423044173,0 69.30653014391552,41.30652199914683,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+	<Placemark id="013B3C8CDF3F28341978">
+		<name>Yashnobod 3</name>
+		<visibility>0</visibility>
+		<LookAt>
+			<longitude>69.31953399957503</longitude>
+			<latitude>41.26905344927945</latitude>
+			<altitude>437.2006931617187</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>157.0704073044726</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_03460625283F558A9620</styleUrl>
+		<Polygon>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						69.31931973989727,41.26900902720985,0 69.31937736534756,41.26892288337039,0 69.31957224511838,41.26898272392778,0 69.31952020485468,41.2690821980712,0 69.31931973989727,41.26900902720985,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+	<Placemark id="0BCBDF01033F28328E76">
+		<name>Yashnobod 4</name>
+		<visibility>0</visibility>
+		<LookAt>
+			<longitude>69.33987436794793</longitude>
+			<latitude>41.25348686331267</latitude>
+			<altitude>437.7366453487595</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>135.6976012516498</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_03460625283F558A9620</styleUrl>
+		<Polygon>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						69.33980224104273,41.25337019632797,0 69.33984291245635,41.25338453731398,0 69.33989657683401,41.25330776053382,0 69.34000784301411,41.25334784691222,0 69.33988032731908,41.25349012342393,0 69.33975235052361,41.25344036031322,0 69.33980224104273,41.25337019632797,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+	<Placemark id="0903927DF03F283769A0">
+		<name>Bektemir 1</name>
+		<LookAt>
+			<longitude>69.36465943720998</longitude>
+			<latitude>41.24152652616934</latitude>
+			<altitude>435.3180981453865</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>193.3009121180839</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Polygon>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						69.36458609989174,41.24137784445031,0 69.36465712064866,41.24130692755809,0 69.364863490879,41.24137538946995,0 69.36477666558666,41.2414733413346,0 69.36458609989174,41.24137784445031,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+	<Placemark id="01EE76D3883F2838596E">
+		<name>Bektemir 2</name>
+		<LookAt>
+			<longitude>69.35281297616498</longitude>
+			<latitude>41.23881312473993</latitude>
+			<altitude>431.8109937697706</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>144.9421489994893</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Polygon>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						69.35270207564294,41.23875489157134,0 69.35283493227732,41.2385737413106,0 69.35295647787966,41.23862475010924,0 69.35276607764567,41.23878923440478,0 69.35270207564294,41.23875489157134,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+	<Placemark id="05A24C67743F283BF76F">
+		<name>Chilonzor 2</name>
+		<LookAt>
+			<longitude>69.19982833666826</longitude>
+			<latitude>41.27134153251125</latitude>
+			<altitude>7.648438030916083e-05</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>328.3489865313676</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Polygon>
+			<outerBoundaryIs>
+				<LinearRing>
+					<coordinates>
+						69.19969035679159,41.27107342813543,0 69.19979398320893,41.27113836794396,0 69.19962472533322,41.2712734415547,0 69.19952455306543,41.27120850163368,0 69.19969035679159,41.27107342813543,0 
+					</coordinates>
+				</LinearRing>
+			</outerBoundaryIs>
+		</Polygon>
+	</Placemark>
+	<Placemark id="09455AB0283F2E09A2CB">
+		<name>Mirobod 1</name>
+		<LookAt>
+			<longitude>69.30014972772142</longitude>
+			<latitude>41.27577284461634</latitude>
+			<altitude>436.2538199526965</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>34.99976153477341</gx:fovy>
+			<range>149.5361925573889</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.29995263166452,41.27571314506091,436.1849835534867</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0FDA5323283F2E09C938">
+		<name>Mriobod 1</name>
+		<LookAt>
+			<longitude>69.30014972772142</longitude>
+			<latitude>41.27577284461634</latitude>
+			<altitude>436.2538199526965</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>34.99976153477341</gx:fovy>
+			<range>149.5361925573889</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.30010432852988,41.27559910440696,436.1604542038257</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="07342E5A1D3F2E09DC20">
+		<name>Mirobod 1</name>
+		<LookAt>
+			<longitude>69.30014972772142</longitude>
+			<latitude>41.27577284461634</latitude>
+			<altitude>436.2538199526965</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>34.99976153477341</gx:fovy>
+			<range>149.5361925573889</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.30020467786673,41.27567902753714,436.1790734368225</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="03B5DF83123F2E09E92C">
+		<name>Mirobod 1</name>
+		<LookAt>
+			<longitude>69.30014972772142</longitude>
+			<latitude>41.27577284461634</latitude>
+			<altitude>436.2538199526965</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>34.99976153477341</gx:fovy>
+			<range>149.5361925573889</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.30004573239975,41.27578676906169,436.0814971213854</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0C404586EE3F2E166BD8">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.31001602645011</longitude>
+			<latitude>41.25197348611191</latitude>
+			<altitude>429.3849119721966</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>105.8964466124417</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.30995173826578,41.25200433013423,429.3013690905316</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0B21EF18353F2E167748">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.31001602645011</longitude>
+			<latitude>41.25197348611191</latitude>
+			<altitude>429.3849119721966</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>105.8964466124417</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.30994742596722,41.25185155233714,429.173026251962</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0C6AA5A4C23F2E1689F4">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.31001602645011</longitude>
+			<latitude>41.25197348611191</latitude>
+			<altitude>429.3849119721966</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>105.8964466124417</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.31011383534646,41.25185082284587,429.6415068246648</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="06C22961CF3F2E1698B8">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.31001602645011</longitude>
+			<latitude>41.25197348611191</latitude>
+			<altitude>429.3849119721966</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>105.8964466124417</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.31010971491733,41.25200172413103,429.5339884182841</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0E38FB28813F2E18BD2E">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.32979618576269</longitude>
+			<latitude>41.33421287123426</latitude>
+			<altitude>477.7339912156199</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>149.6811800301839</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.32977463508288,41.33405419977647,477.6013664202525</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="076D09C6B43F2E18CC78">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.32979618576269</longitude>
+			<latitude>41.33421287123426</latitude>
+			<altitude>477.7339912156199</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>149.6811800301839</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.32970158829825,41.33410182991388,477.5794375098143</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0B98F7DCE43F2E18D8D0">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.32979618576269</longitude>
+			<latitude>41.33421287123426</latitude>
+			<altitude>477.7339912156199</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>149.6811800301839</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.32988829346601,41.33426811003703,477.7339997119981</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0CA60E57B53F2E18E604">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.32979618576269</longitude>
+			<latitude>41.33421287123426</latitude>
+			<altitude>477.7339912156199</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>149.6811800301839</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.32996009119432,41.33422859195573,477.710615663095</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="08E8A9C3163F2E1AAD90">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.36758941832265</longitude>
+			<latitude>41.36167886762532</latitude>
+			<altitude>504.8292456236944</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>111.5014506992156</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.36737628337814,41.36170597514784,504.7889218321782</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="04DB9115193F2E1AB704">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.36758941832265</longitude>
+			<latitude>41.36167886762532</latitude>
+			<altitude>504.8292456236944</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>111.5014506992156</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.36736441982248,41.36160606561192,505.5338532990503</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="084ACC7B9B3F2E1AC028">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.36758941832265</longitude>
+			<latitude>41.36167886762532</latitude>
+			<altitude>504.8292456236944</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>111.5014506992156</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.36758941829886,41.36158200585226,505.3904321942798</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0413A80DFD3F2E1AD1F8">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.36758941832265</longitude>
+			<latitude>41.36167886762532</latitude>
+			<altitude>504.8292456236944</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>111.5014506992156</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.36759209317295,41.36168187910762,504.8079671685898</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="03EA0CF0233F2E214177">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.3683563388558</longitude>
+			<latitude>41.34955549241155</latitude>
+			<altitude>509.3985688063011</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>188.9562247628965</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.3681933524924,41.34946769276974,509.5598622592267</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="09DE0901793F2E2148F8">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.3683563388558</longitude>
+			<latitude>41.34955549241155</latitude>
+			<altitude>509.3985688063011</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>188.9562247628965</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.3682990715147,41.34939654128824,509.8219421477352</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0A9CD220F23F2E21524E">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.3683563388558</longitude>
+			<latitude>41.34955549241155</latitude>
+			<altitude>509.3985688063011</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>188.9562247628965</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.36844391501793,41.34949258327546,509.4598037309773</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0F00C890823F2E215BF4">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.3683563388558</longitude>
+			<latitude>41.34955549241155</latitude>
+			<altitude>509.3985688063011</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>188.9562247628965</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.36833670334737,41.34957873661241,509.3985630486821</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="063E0AC2CB3F2E2CB7C4">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.39291570322301</longitude>
+			<latitude>41.36106396647669</latitude>
+			<altitude>499.4208835039699</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>95.70897038424846</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.39278018517597,41.36103739489779,499.9024281098979</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0049447CC13F2E2CC7EE">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.39291570322301</longitude>
+			<latitude>41.36106396647669</latitude>
+			<altitude>499.4208835039699</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>95.70897038424846</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.39292487962641,41.36096840307442,499.4817278753457</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0CC1AEF99F3F2E2CD40B">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.39291570322301</longitude>
+			<latitude>41.36106396647669</latitude>
+			<altitude>499.4208835039699</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>95.70897038424846</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.39302826478978,41.361073449306,499.3536890814976</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="04786017CB3F2E2CDE14">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.39291570322301</longitude>
+			<latitude>41.36106396647669</latitude>
+			<altitude>499.4208835039699</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>95.70897038424846</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.39286904179835,41.36114290989217,499.4517936690862</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="06DD6825203F2E2E210C">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.21838421593917</longitude>
+			<latitude>41.35623481000663</latitude>
+			<altitude>432.992340060392</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>114.861994007988</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.218235582907,41.35616353136255,433.088339182915</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="021D36CFA93F2E2E29C1">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.21838421593917</longitude>
+			<latitude>41.35623481000663</latitude>
+			<altitude>432.992340060392</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>114.861994007988</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.21830624370274,41.35625167955905,433.1093975979492</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0B88D43B1F3F2E2E32DC">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.21838421593917</longitude>
+			<latitude>41.35623481000663</latitude>
+			<altitude>432.992340060392</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>114.861994007988</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.21841181467845,41.35608392778742,432.7792598350988</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0EE19FC2D13F2E2E3E76">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.21838421593917</longitude>
+			<latitude>41.35623481000663</latitude>
+			<altitude>432.992340060392</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>114.861994007988</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.21850205223535,41.35616328993985,432.7685607544801</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="08046A65203F2E2EE424">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.23303770152562</longitude>
+			<latitude>41.35508695865373</latitude>
+			<altitude>438.6222430440136</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>147.4766310782798</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.23290523311077,41.35505189011471,438.1488854469082</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0B352909713F2E2EEF78">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.23303770152562</longitude>
+			<latitude>41.35508695865373</latitude>
+			<altitude>438.6222430440136</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>147.4766310782798</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.23299532678658,41.35491864244886,438.8588464771728</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="07048C85493F2E2EFA78">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.23303770152562</longitude>
+			<latitude>41.35508695865373</latitude>
+			<altitude>438.6222430440136</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>147.4766310782798</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.23312121610324,41.35497173521887,438.9607396813205</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0EB9949C533F2E2F03EE">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.23303770152562</longitude>
+			<latitude>41.35508695865373</latitude>
+			<altitude>438.6222430440136</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>147.4766310782798</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.23305302779461,41.355098905461,438.6255647190881</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="011918F9DF3F2E2FB876">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.25353069790582</longitude>
+			<latitude>41.34858450348863</latitude>
+			<altitude>447.3138755756719</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>132.8465479320039</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.25344073043426,41.34860873593204,447.3442037841447</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0E71B1346E3F2E2FC501">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.25353069790582</longitude>
+			<latitude>41.34858450348863</latitude>
+			<altitude>447.3138755756719</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>132.8465479320039</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.25348484855817,41.34847043934183,446.76839049181</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0533FA941F3F2E2FD024">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.25353069790582</longitude>
+			<latitude>41.34858450348863</latitude>
+			<altitude>447.3138755756719</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>132.8465479320039</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.25358784994937,41.3486341612011,447.756031380723</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0A076907B63F2E2FDDD9">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.25353069790582</longitude>
+			<latitude>41.34858450348863</latitude>
+			<altitude>447.3138755756719</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>132.8465479320039</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.2536356899097,41.34849891818679,447.4863298787465</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0A665AD5A73F2E3089F8">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.24360119286087</longitude>
+			<latitude>41.21915913661331</latitude>
+			<altitude>400.9840065487842</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>222.1759941860728</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.24359055451539,41.21901843271765,400.9078321716958</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0391036F963F2E309CE9">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.24360119286087</longitude>
+			<latitude>41.21915913661331</latitude>
+			<altitude>400.9840065487842</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>222.1759941860728</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.24372015231603,41.21902357975368,400.5996759343015</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="06DE4BFBC23F2E30A739">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.24360119286087</longitude>
+			<latitude>41.21915913661331</latitude>
+			<altitude>400.9840065487842</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>222.1759941860728</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.24369521030272,41.21919316196879,400.8008436529951</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="08114AACF33F2E30B1CF">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.24360119286087</longitude>
+			<latitude>41.21915913661331</latitude>
+			<altitude>400.9840065487842</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>222.1759941860728</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.2435569131889,41.21918245144523,401.1427309224127</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0FFA95D63E3F2E3215B4">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.26735896322769</longitude>
+			<latitude>41.2323887822788</latitude>
+			<altitude>410.4184703305947</altitude>
+			<heading>354.3171643498288</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>90.14073755885875</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.26729816537284,41.23224284711846,410.5577058373432</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="08C2ED62B73F2E322040">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.26735896322769</longitude>
+			<latitude>41.2323887822788</latitude>
+			<altitude>410.4184703305947</altitude>
+			<heading>354.3171643498288</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>90.14073755885875</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.26740391440731,41.23222361204766,410.5514718157084</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="094F4156BC3F2E322A0F">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.26735896322769</longitude>
+			<latitude>41.2323887822788</latitude>
+			<altitude>410.4184703305947</altitude>
+			<heading>354.3171643498288</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>90.14073755885875</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.26746636558539,41.2324220441364,410.6053804149648</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="092A0AD0703F2E3234CF">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.26735896322769</longitude>
+			<latitude>41.2323887822788</latitude>
+			<altitude>410.4184703305947</altitude>
+			<heading>354.3171643498288</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>90.14073755885875</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.26734406598366,41.23241401604406,410.4707158281691</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="032F59967E3F2E34E493">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.19240791977224</longitude>
+			<latitude>41.23167051993157</latitude>
+			<altitude>394.9332262519971</altitude>
+			<heading>359.9988845907095</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>150.0261554190547</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.19234343271584,41.23152147070679,394.9243090087444</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0B550BAF913F2E353D2B">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.19240791977224</longitude>
+			<latitude>41.23167051993157</latitude>
+			<altitude>394.9332262519971</altitude>
+			<heading>359.9988845851547</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>150.0261670078544</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.19226034366967,41.23156178651809,394.5901508307068</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0C0524B3043F2E357877">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.19240791977224</longitude>
+			<latitude>41.23167051993157</latitude>
+			<altitude>394.9332262519971</altitude>
+			<heading>359.9988845851547</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>150.0261670078544</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.1925278792732,41.23169082024029,394.619034336576</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="03CC2B7B9C3F2E35829F">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.19240791977224</longitude>
+			<latitude>41.23167051993157</latitude>
+			<altitude>394.9332262519971</altitude>
+			<heading>359.9988845851547</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>150.0261670078544</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.19244742200905,41.2317429926,394.93321724776</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="04472E00713F2E371623">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.20974536822925</longitude>
+			<latitude>41.21675623241395</latitude>
+			<altitude>391.5253765632151</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>129.2008853847074</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.20963878102073,41.21680566198796,391.0066997908033</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="09B662EE6F3F2E372054">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.20974536822925</longitude>
+			<latitude>41.21675623241395</latitude>
+			<altitude>391.5253765632151</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>129.2008853847074</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.20972060489716,41.21663631742152,391.3851202829632</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0837E1B9AB3F2E372A37">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.20974536822925</longitude>
+			<latitude>41.21675623241395</latitude>
+			<altitude>391.5253765632151</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>129.2008853847074</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.20984519606171,41.21667068844889,391.7177209812122</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="04DE9647553F2E373686">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.20974536822925</longitude>
+			<latitude>41.21675623241395</latitude>
+			<altitude>391.5253765632151</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>129.2008853847074</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.20974536821615,41.21684599205124,391.2199331390539</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="081ECC2DBF3F2E37FB29">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.21772546001144</longitude>
+			<latitude>41.20467107892159</latitude>
+			<altitude>391.4574009506775</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>106.5959465611195</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.21768296444203,41.20464965768794,391.4939307344095</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="08FB03DA673F2E380687">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.21772546001144</longitude>
+			<latitude>41.20467107892159</latitude>
+			<altitude>391.4574009506775</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>106.5959465611195</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.21777842899026,41.2045261337331,390.9387075915133</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0883A8186C3F2E3811BE">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.21772546001144</longitude>
+			<latitude>41.20467107892159</latitude>
+			<altitude>391.4574009506775</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>106.5959465611195</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.21792793072406,41.20458462911554,390.9427273064496</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0EA87BACAA3F2E381E83">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.21772546001144</longitude>
+			<latitude>41.20467107892159</latitude>
+			<altitude>391.4574009506775</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>106.5959465611195</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.21782237588994,41.20470082082074,391.4653731196773</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0C71E8786B3F2E39E431">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.35568384392511</longitude>
+			<latitude>41.29757720703478</latitude>
+			<altitude>458.6159358739783</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>153.0490474603539</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.35569850873921,41.29754828593222,458.6616064394589</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="02A7D57FEF3F2E39EF28">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.35568384392511</longitude>
+			<latitude>41.29757720703478</latitude>
+			<altitude>458.6159358739783</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>153.0490474603539</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.35560583438019,41.29741832420449,459.0582053969555</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="00CCDD077B3F2E39FB94">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.35568384392511</longitude>
+			<latitude>41.29757720703478</latitude>
+			<altitude>458.6159358739783</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>153.0490474603539</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.35575464555275,41.29736947960104,458.8303143376679</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0B6BFCB3FF3F2E3A0828">
+		<name>Метка без названия</name>
+		<LookAt>
+			<longitude>69.35568384392511</longitude>
+			<latitude>41.29757720703478</latitude>
+			<altitude>458.6159358739783</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>153.0490474603539</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.35580111307773,41.29748038490848,458.7259801831723</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0295284EEF3F2E3A13EC">
+		<name>Метка без названия</name>
+		<visibility>0</visibility>
+		<LookAt>
+			<longitude>69.35568384392511</longitude>
+			<latitude>41.29757720703478</latitude>
+			<altitude>458.6159358739783</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>153.0490474603539</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.35577548103929,41.29753176845323,458.691674257845</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0E2109AAA13F2E3B1507">
+		<name>Метка без названия</name>
+		<visibility>0</visibility>
+		<LookAt>
+			<longitude>69.30649224644294</longitude>
+			<latitude>41.3064702762064</latitude>
+			<altitude>458.9032251421209</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>121.6985050703443</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.30652046943206,41.30635147822777,458.7723270680033</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0049CD8C1E3F2E3B1E87">
+		<name>Метка без названия</name>
+		<visibility>0</visibility>
+		<LookAt>
+			<longitude>69.30649224644294</longitude>
+			<latitude>41.3064702762064</latitude>
+			<altitude>458.9032251421209</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>121.6985050703443</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.30640257034149,41.30641865500069,458.5805746831902</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="08BA4B75583F2E3B2974">
+		<name>Метка без названия</name>
+		<visibility>0</visibility>
+		<LookAt>
+			<longitude>69.30649224644294</longitude>
+			<latitude>41.3064702762064</latitude>
+			<altitude>458.9032251421209</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>121.6985050703443</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.3066645127616,41.30644212874407,458.7663848954062</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="054A8935C63F2E3B32F6">
+		<name>Метка без названия</name>
+		<visibility>0</visibility>
+		<LookAt>
+			<longitude>69.30649484566335</longitude>
+			<latitude>41.30647375562648</latitude>
+			<altitude>458.9167141767498</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>113.3420649859727</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.30653012460985,41.30652098204622,459.019598493468</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0DAF93D3553F2E3CF67B">
+		<name>Метка без названия</name>
+		<visibility>0</visibility>
+		<LookAt>
+			<longitude>69.36465316537308</longitude>
+			<latitude>41.24147016931725</latitude>
+			<altitude>435.2518632789229</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>166.6989731073045</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.36458931014579,41.24137463892491,435.2518631643364</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="06D590C6153F2E3D0138">
+		<name>Метка без названия</name>
+		<visibility>0</visibility>
+		<LookAt>
+			<longitude>69.36465316537308</longitude>
+			<latitude>41.24147016931725</latitude>
+			<altitude>435.2518632789229</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>166.6989731073045</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.36465715767942,41.24130556096251,435.1951080788905</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="00170EA9DD3F2E3D0A16">
+		<name>Метка без названия</name>
+		<visibility>0</visibility>
+		<LookAt>
+			<longitude>69.36465316537308</longitude>
+			<latitude>41.24147016931725</latitude>
+			<altitude>435.2518632789229</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>166.6989731073045</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.36486031020453,41.24137281895325,435.5609082691735</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0F72FF99E03F2E3D143E">
+		<name>Метка без названия</name>
+		<visibility>0</visibility>
+		<LookAt>
+			<longitude>69.36465316537308</longitude>
+			<latitude>41.24147016931725</latitude>
+			<altitude>435.2518632789229</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>166.6989731073045</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.364778159222,41.24146766958844,435.3267867206281</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="052ED97DBC3F2E3D9E03">
+		<name>Метка без названия</name>
+		<visibility>0</visibility>
+		<LookAt>
+			<longitude>69.35281071066464</longitude>
+			<latitude>41.23878349332297</latitude>
+			<altitude>431.7308820470636</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>145.2341056298246</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.35270269714498,41.23875423551823,431.4225024211261</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="02CA553E723F2E3DA93B">
+		<name>Метка без названия</name>
+		<visibility>0</visibility>
+		<LookAt>
+			<longitude>69.35281071066464</longitude>
+			<latitude>41.23878349332297</latitude>
+			<altitude>431.7308820470636</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>145.2341056298246</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.35283396451261,41.23857322136075,431.2646091336265</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="04ED2740FE3F2E3DB3B3">
+		<name>Метка без названия</name>
+		<visibility>0</visibility>
+		<LookAt>
+			<longitude>69.35281071066464</longitude>
+			<latitude>41.23878349332297</latitude>
+			<altitude>431.7308820470636</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>145.2341056298246</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.3529556158651,41.23862266173698,431.6972126215634</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0A4B62A56B3F2E3DBC0C">
+		<name>Метка без названия</name>
+		<visibility>0</visibility>
+		<LookAt>
+			<longitude>69.35281071066464</longitude>
+			<latitude>41.23878349332297</latitude>
+			<altitude>431.7308820470636</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>145.2341056298246</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.35277013808461,41.23878654425786,431.7006312198582</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0E1AFFE9B73F2E3E4C28">
+		<name>Метка без названия</name>
+		<visibility>0</visibility>
+		<LookAt>
+			<longitude>69.19968190646425</longitude>
+			<latitude>41.27125075361729</latitude>
+			<altitude>431.3884408791388</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>104.5019779357608</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.1995258839201,41.27120967908083,431.3884433024315</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="04403AC8F23F2E3E545C">
+		<name>Метка без названия</name>
+		<visibility>0</visibility>
+		<LookAt>
+			<longitude>69.19968190646425</longitude>
+			<latitude>41.27125075361729</latitude>
+			<altitude>431.3884408791388</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>104.5019779357608</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.19969108425148,41.27107422766576,431.3884393626357</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0A87E3A9F23F2E3E5EE8">
+		<name>Метка без названия</name>
+		<visibility>0</visibility>
+		<LookAt>
+			<longitude>69.19968190646425</longitude>
+			<latitude>41.27125075361729</latitude>
+			<altitude>431.3884408791388</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>104.5019779357608</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.19979370857313,41.27113881794108,431.3884572239864</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="08D6C74F523F2E3E6A27">
+		<name>Метка без названия</name>
+		<visibility>0</visibility>
+		<LookAt>
+			<longitude>69.19968190646425</longitude>
+			<latitude>41.27125075361729</latitude>
+			<altitude>431.3884408791388</altitude>
+			<heading>0</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>104.5019779357608</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0F9CFD1C093F558A961F</styleUrl>
+		<Point>
+			<coordinates>69.19962517094275,41.27127176112823,431.3884259178174</coordinates>
+		</Point>
+	</Placemark>
+</Document>
+</kml>

@@ -309,26 +309,44 @@
       <div class="panel-window-title">Browser / Layers Panel</div>
       <h1 class="сарлавҳа">Харитада солиштириш</h1>
       <p class="изоҳ">
-        Манба 1: <b>инвестор маълумотлари</b> (CSV).<br />
-        Манба 2: <b>Toshkent Invest company маълумотлари</b> (KML).
+        Гуруҳ 1: <b>Dala</b> (CSV + 2 та KML), ранги яшил.<br />
+        Гуруҳ 2: <b>Toshkent Invest</b> (CSV + 1 та KML), ранги кўк.<br />
+        Иккаласини бир вақтда ёқиш мумкин.
       </p>
 
       <div class="блок">
-        <div class="section-title">Қатламлар (полигонлар)</div>
+        <div class="section-title">Датасет гуруҳлари</div>
+        <div class="қатор">
+          <input type="checkbox" name="datasetGroup" id="dataset-dala" value="dala" checked />
+          <label for="dataset-dala"><b>Dala</b></label>
+        </div>
+        <div class="қатор">
+          <input type="checkbox" name="datasetGroup" id="dataset-invest" value="invest" checked />
+          <label for="dataset-invest">Toshkent Invest</label>
+        </div>
+      </div>
+
+      <div class="блок">
+        <div class="section-title">Қатламлар</div>
+        <div class="қатор">
+          <input type="checkbox" id="қатлам-ҳаммаси" checked />
+          <span class="белги" style="background:linear-gradient(90deg,var(--primary),var(--secondary));"></span>
+          <label for="қатлам-ҳаммаси">Гуруҳ қатламлари</label>
+        </div>
         <div class="қатор">
           <input type="checkbox" id="қатлам-csv" checked />
           <span class="белги" style="background:var(--primary)"></span>
-          <label for="қатлам-csv">Фақат CSV</label>
+          <label for="қатлам-csv">CSV нуқталар</label>
         </div>
         <div class="қатор">
           <input type="checkbox" id="қатлам-kml" checked />
           <span class="белги" style="background:var(--secondary)"></span>
-          <label for="қатлам-kml">Фақат KML</label>
+          <label for="қатлам-kml">KML полигонлар</label>
         </div>
         <div class="қатор">
-          <input type="checkbox" id="қатлам-умумий" checked />
-          <span class="белги" style="background:var(--overlap)"></span>
-          <label for="қатлам-умумий">Иккала манбада бор</label>
+          <input type="checkbox" id="қатлам-xato" />
+          <span class="белги" style="background:#b91c1c"></span>
+          <label for="қатлам-xato">Хатолик/мос эмас</label>
         </div>
       </div>
 
@@ -347,7 +365,9 @@
           <input class="input filter-full" id="searchText" type="text" placeholder="ИД, туман, маҳалла, манзил..." />
           <select class="select" id="sourceType">
             <option value="all">Ҳаммаси</option>
-            <option value="both">Иккала манбада бор</option>
+            <option value="matched">Match (яқин)</option>
+            <option value="warning">Warning (узоқроқ)</option>
+            <option value="error">Error (мос эмас)</option>
             <option value="csv_only">Фақат CSV</option>
             <option value="kml_only">Фақат KML</option>
           </select>
@@ -378,10 +398,13 @@
       <div class="блок">
         <div class="stat">CSV жами: <b id="jamiCsv">0</b></div>
         <div class="stat">KML жами: <b id="jamiKml">0</b></div>
-        <div class="stat">Иккаласида бор: <b id="ikkalasida">0</b></div>
+        <div class="stat">Match (≤120м): <b id="ikkalasida">0</b></div>
+        <div class="stat">Warning (121-300м): <b id="warningCount">0</b></div>
+        <div class="stat">Error (>300м): <b id="errorCount">0</b></div>
         <div class="stat">Фақат CSV: <b id="faqatCsv">0</b></div>
         <div class="stat">Фақат KML: <b id="faqatKml">0</b></div>
-        <div class="stat-small">Центроидлар масофаси (м) — <b id="distMin">0</b> / <b id="distAvg">0</b> / <b id="distMax">0</b></div>
+        <div class="stat-small">Яқин масофа (м) — <b id="distMin">0</b> / <b id="distAvg">0</b> / <b id="distMax">0</b></div>
+        <div class="stat-small" id="qaText">QA ҳозирча ҳисобланмади.</div>
       </div>
 
     
@@ -398,10 +421,33 @@
     crossorigin=""
   ></script>
   <script>
-    const CSV_FILE = "Elektrzoryadka_Хокимимят_подходящие_локации_.csv";
-    const KML_FILE = "TOSHKENT_INVEST.kml";
+    const DATASETS = {
+      invest: {
+        csvFile: "Toshkentinvest/Elektrzoryadka_Хокимимят_подходящие_локации_.csv",
+        kmlFiles: ["Toshkentinvest/TOSHKENT_INVEST.kml"],
+        csvParser: "legacy"
+      },
+      dala: {
+        csvFile: "dala/dataset-dala.csv",
+        kmlFiles: ["dala/Dala dokon 1 partiya.kml", "dala/Dala dokon 2 partiya.kml"],
+        csvParser: "dala"
+      }
+    };
+    const GROUP_COLORS = {
+      dala: "#16a34a",
+      invest: "#2563eb"
+    };
 
-    const map = L.map("харита", { preferCanvas: true }).setView([41.3111, 69.2797], 11);
+    const map = L.map("харита", { preferCanvas: false }).setView([41.3111, 69.2797], 11);
+
+    const PANE_KML_POLYGONS = "paneKmlPolygonsBelow";
+    map.createPane(PANE_KML_POLYGONS);
+    map.getPane(PANE_KML_POLYGONS).style.zIndex = "360";
+    map.getPane(PANE_KML_POLYGONS).style.pointerEvents = "none";
+
+    const PANE_POINT_MARKERS = "panePointMarkersTop";
+    map.createPane(PANE_POINT_MARKERS);
+    map.getPane(PANE_POINT_MARKERS).style.zIndex = "650";
 
     // Basemap: "Hybrid" (satellite + labels) — QGIS-like default style
     const streetBase = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -439,16 +485,18 @@
 
     const layerCsv = L.layerGroup().addTo(map);
     const layerKml = L.layerGroup().addTo(map);
-    const layerOverlap = L.layerGroup().addTo(map);
+    const layerErrors = L.layerGroup();
 
-    // Marker layers
-    const markersCsv = L.layerGroup().addTo(map);
     const markersKml = L.layerGroup().addTo(map);
-    const markersOverlap = L.layerGroup().addTo(map);
 
     const fitGroup = L.featureGroup();
     let allCsvRows = [];
     let allKmlRows = [];
+    const datasetCache = new Map();
+    let didAutoFitOnce = false;
+
+    const DIST_OK = 120;
+    const DIST_WARNING = 300;
 
     function setError(text) {
       document.getElementById("xato").textContent = text || "";
@@ -489,21 +537,99 @@
       return 2 * R * Math.asin(Math.sqrt(h));
     }
 
-    function parseCsvRows(text) {
+    function dmsToDecimal(deg, min, sec, hemi) {
+      const sign = /[SWЮЗ]/i.test(hemi || "") ? -1 : 1;
+      return sign * (Number(deg) + Number(min || 0) / 60 + Number(sec || 0) / 3600);
+    }
+
+    function parseLatLon(raw) {
+      if (!raw) return null;
+      const text = String(raw).replaceAll('"', "").replace(/\s+/g, " ").trim();
+      const decimalMatch = text.match(/(-?\d+(?:[.,]\d+)?)\s*,\s*(-?\d+(?:[.,]\d+)?)/);
+      if (decimalMatch) {
+        const lat = toNumber(decimalMatch[1]);
+        const lon = toNumber(decimalMatch[2]);
+        if (lat != null && lon != null) return [lat, lon];
+      }
+      const normalized = text
+        .replaceAll("Н", "N")
+        .replaceAll("н", "N")
+        .replaceAll("Е", "E")
+        .replaceAll("Э", "E")
+        .replaceAll("В", "E")
+        .replaceAll("Ю", "S")
+        .replaceAll("З", "W");
+      const dms = normalized.match(/(\d+)[°º]\s*(\d+)?'?\s*(\d+(?:[.,]\d+)?)?"?\s*([NS])\s*(\d+)[°º]\s*(\d+)?'?\s*(\d+(?:[.,]\d+)?)?"?\s*([EW])/i);
+      if (dms) {
+        const lat = dmsToDecimal(dms[1], dms[2], toNumber(dms[3]) || 0, dms[4].toUpperCase());
+        const lon = dmsToDecimal(dms[5], dms[6], toNumber(dms[7]) || 0, dms[8].toUpperCase());
+        return [lat, lon];
+      }
+      return null;
+    }
+
+    function parseCsvRows(text, datasetKey = "dala") {
+      const lines = text.split(/\r?\n/);
+      const rows = [];
+      let tuman = "";
+      let pending = null;
+
+      for (const line of lines) {
+        if (!line.trim()) continue;
+        const raw = line.trim();
+        if (/тумани/i.test(raw) && !raw.includes(";")) {
+          tuman = raw.replace(/;+/g, "").trim();
+          continue;
+        }
+        const parts = line.split(";").map((v) => v.trim());
+        const id = (parts[0] || "").replace(".", "").trim();
+        const isDataRow = /^\d+$/.test(id);
+
+        if (isDataRow) {
+          const coordRaw = [parts[4], parts[5], raw].filter(Boolean).join(" ");
+          const latlon = parseLatLon(coordRaw);
+          const row = {
+            id: `${tuman || "unknown"}-${id}`,
+            number: id,
+            datasetKey,
+            tuman,
+            mahalla: parts[1] || "",
+            manzil: parts[2] || "",
+            maydon: parts[3] || "",
+            maydonNum: toNumber(parts[3]),
+            izoh: parts[6] || parts[5] || "",
+            centroid: latlon,
+            searchText: [id, tuman, parts[1], parts[2], parts[3], parts[6]].join(" ").toLowerCase()
+          };
+          rows.push(row);
+          pending = row.centroid ? null : row;
+          continue;
+        }
+
+        if (pending && !pending.centroid) {
+          const latlon = parseLatLon(raw);
+          if (latlon) pending.centroid = latlon;
+        }
+      }
+
+      return rows.filter((r) => Array.isArray(r.centroid));
+    }
+
+    function parseCsvRowsLegacy(text, datasetKey = "invest") {
       const lines = text.split(/\r?\n/);
       const rows = [];
       let active = null;
-
       for (const line of lines) {
         if (!line.trim()) continue;
         const parts = line.split(";").map(v => v.trim());
         const id = toNumber(parts[0]);
-
         if (Number.isInteger(id) && id > 0) {
           const lat = toNumber(parts[4]);
           const lon = toNumber(parts[5]);
           active = {
             id: String(id),
+            number: String(id),
+            datasetKey,
             tuman: parts[1] || "",
             mahalla: parts[2] || "",
             manzil: parts[3] || "",
@@ -512,35 +638,26 @@
             izoh: parts[7] || "",
             coords: []
           };
-          if (lat && lon) active.coords.push([lat, lon]);
+          if (lat != null && lon != null) active.coords.push([lat, lon]);
           rows.push(active);
           continue;
         }
-
         if (active) {
           const lat = toNumber(parts[4]);
           const lon = toNumber(parts[5]);
-          if (lat && lon) active.coords.push([lat, lon]);
+          if (lat != null && lon != null) active.coords.push([lat, lon]);
         }
       }
-
       return rows
         .filter(r => r.coords.length >= 3)
         .map(r => ({
           ...r,
           centroid: getCentroid(r.coords),
-          searchText: [
-            r.id,
-            r.tuman,
-            r.mahalla,
-            r.manzil,
-            r.maydon,
-            r.izoh
-          ].join(" ").toLowerCase()
+          searchText: [r.id, r.tuman, r.mahalla, r.manzil, r.maydon, r.izoh].join(" ").toLowerCase()
         }));
     }
 
-    function parseKml(text) {
+    function parseKml(text, datasetKey = "dala") {
       const xml = new DOMParser().parseFromString(text, "text/xml");
       const placemarks = Array.from(xml.getElementsByTagName("Placemark"));
       const result = [];
@@ -549,7 +666,7 @@
         const nameEl = p.getElementsByTagName("name")[0];
         const coordEl = p.getElementsByTagName("coordinates")[0];
         if (!nameEl || !coordEl) continue;
-        const id = nameEl.textContent.trim();
+          const id = nameEl.textContent.trim();
         const coords = coordEl.textContent
           .trim()
           .split(/\s+/)
@@ -557,11 +674,12 @@
             const [lon, lat] = item.split(",");
             return [toNumber(lat), toNumber(lon)];
           })
-          .filter(([lat, lon]) => lat && lon);
+            .filter(([lat, lon]) => lat != null && lon != null);
 
         if (coords.length >= 3) {
           result.push({
             id,
+            datasetKey,
             coords,
             centroid: getCentroid(coords),
             searchText: String(id).toLowerCase()
@@ -569,6 +687,52 @@
         }
       }
       return result;
+    }
+
+    function pointInPolygon(point, polygon) {
+      const x = point[1];
+      const y = point[0];
+      let inside = false;
+      for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+        const xi = polygon[i][1], yi = polygon[i][0];
+        const xj = polygon[j][1], yj = polygon[j][0];
+        const intersect = ((yi > y) !== (yj > y)) &&
+          (x < (xj - xi) * (y - yi) / ((yj - yi) || 1e-12) + xi);
+        if (intersect) inside = !inside;
+      }
+      return inside;
+    }
+
+    function classifyDistance(distanceM) {
+      if (distanceM <= DIST_OK) return "matched";
+      if (distanceM <= DIST_WARNING) return "warning";
+      return "error";
+    }
+
+    function buildRelations(csvRows, kmlRows) {
+      const csvToKml = new Map();
+      const kmlToCsv = new Map();
+      for (const csv of csvRows) {
+        let best = null;
+        for (const kml of kmlRows) {
+          if (kml.datasetKey !== csv.datasetKey) continue;
+          const d = haversineMeters(csv.centroid, kml.centroid);
+          if (!best || d < best.distanceM) {
+            best = { kml, distanceM: d, inside: pointInPolygon(csv.centroid, kml.coords) };
+          }
+        }
+        if (best) csvToKml.set(csv.id, best);
+      }
+      for (const kml of kmlRows) {
+        let best = null;
+        for (const csv of csvRows) {
+          if (csv.datasetKey !== kml.datasetKey) continue;
+          const d = haversineMeters(csv.centroid, kml.centroid);
+          if (!best || d < best.distanceM) best = { csv, distanceM: d };
+        }
+        if (best) kmlToCsv.set(kml.id, best);
+      }
+      return { csvToKml, kmlToCsv };
     }
 
     function fillSelect(selectId, values, defaultLabel) {
@@ -622,53 +786,41 @@
 
     function applyFilters(csvRows, kmlRows) {
       const filters = getFilterState();
-      const csvMap = new Map(csvRows.map((r) => [r.id, r]));
-      const kmlMap = new Map(kmlRows.map((r) => [r.id, r]));
-      const allIds = new Set([...csvMap.keys(), ...kmlMap.keys()]);
-      const allowedIds = new Set();
-
-      for (const id of allIds) {
-        const csv = csvMap.get(id);
-        const kml = kmlMap.get(id);
-        const hasCsv = Boolean(csv);
-        const hasKml = Boolean(kml);
-        const sourceType = hasCsv && hasKml ? "both" : hasCsv ? "csv_only" : "kml_only";
-
-        if (filters.sourceType !== "all" && filters.sourceType !== sourceType) continue;
-        if (filters.searchId && !String(id).includes(filters.searchId)) continue;
-
-        const combinedSearch = [csv ? csv.searchText : "", kml ? kml.searchText : "", sourceType].join(" ");
-        if (filters.searchText && !combinedSearch.includes(filters.searchText)) continue;
-
-        if (filters.tuman && (!csv || csv.tuman !== filters.tuman)) continue;
-        if (filters.mahalla && (!csv || csv.mahalla !== filters.mahalla)) continue;
-
-        const centroid = csv ? csv.centroid : kml ? kml.centroid : null;
-        if (filters.latMin != null || filters.latMax != null) {
-          if (!centroid || !withinRange(centroid[0], filters.latMin, filters.latMax)) continue;
-        }
-        if (filters.lngMin != null || filters.lngMax != null) {
-          if (!centroid || !withinRange(centroid[1], filters.lngMin, filters.lngMax)) continue;
-        }
-
-        if (filters.areaMin != null || filters.areaMax != null) {
-          const area = csv ? csv.maydonNum : null;
-          if (!withinRange(area, filters.areaMin, filters.areaMax)) continue;
-        }
-
-        if (filters.distMin != null || filters.distMax != null) {
-          if (!(hasCsv && hasKml)) continue;
-          const dist = haversineMeters(csv.centroid, kml.centroid);
-          if (!withinRange(dist, filters.distMin, filters.distMax)) continue;
-        }
-
-        allowedIds.add(id);
+      const { csvToKml, kmlToCsv } = buildRelations(csvRows, kmlRows);
+      if (filters.sourceType === "kml_only") {
+        const unmatched = kmlRows.filter((kml) => !kmlToCsv.get(kml.id));
+        return { csvRows: [], kmlRows: unmatched };
       }
-
-      return {
-        csvRows: csvRows.filter((r) => allowedIds.has(r.id)),
-        kmlRows: kmlRows.filter((r) => allowedIds.has(r.id))
-      };
+      const filteredCsv = csvRows.filter((csv) => {
+        const rel = csvToKml.get(csv.id);
+        const status = rel ? classifyDistance(rel.distanceM) : "csv_only";
+        if (filters.sourceType !== "all" && filters.sourceType !== status) return false;
+        if (filters.searchId && !String(csv.number || csv.id).includes(filters.searchId)) return false;
+        if (filters.searchText && !csv.searchText.includes(filters.searchText)) return false;
+        if (filters.tuman && csv.tuman !== filters.tuman) return false;
+        if (filters.mahalla && csv.mahalla !== filters.mahalla) return false;
+        if (!withinRange(csv.centroid[0], filters.latMin, filters.latMax)) return false;
+        if (!withinRange(csv.centroid[1], filters.lngMin, filters.lngMax)) return false;
+        if (filters.areaMin != null || filters.areaMax != null) {
+          if (!withinRange(csv.maydonNum, filters.areaMin, filters.areaMax)) return false;
+        }
+        if (filters.distMin != null || filters.distMax != null) {
+          if (!rel || !withinRange(rel.distanceM, filters.distMin, filters.distMax)) return false;
+        }
+        return true;
+      });
+      const keepKml = new Set();
+      filteredCsv.forEach((csv) => {
+        const rel = csvToKml.get(csv.id);
+        if (rel) keepKml.add(rel.kml.id);
+      });
+      if (filters.sourceType === "kml_only" || filters.sourceType === "all") {
+        kmlRows.forEach((kml) => {
+          const rel = kmlToCsv.get(kml.id);
+          if (!rel) keepKml.add(kml.id);
+        });
+      }
+      return { csvRows: filteredCsv, kmlRows: kmlRows.filter((k) => keepKml.has(k.id)) };
     }
 
     function redrawWithFilters() {
@@ -679,7 +831,8 @@
     function popupCsv(r) {
       return `
         <b>Инвестор маълумоти (CSV)</b><br/>
-        ИД: ${r.id}<br/>
+        Гуруҳ: ${r.datasetKey === "dala" ? "Dala" : "Toshkent Invest"}<br/>
+        Рақам: ${r.number}<br/>
         Туман: ${r.tuman || "-"}<br/>
         Маҳалла: ${r.mahalla || "-"}<br/>
         Манзил: ${r.manzil || "-"}<br/>
@@ -689,102 +842,110 @@
     }
 
     function popupKml(r) {
-      return `<b>Toshkent Invest company (KML)</b><br/>ИД: ${r.id}`;
+      return `<b>KML polygon</b><br/>Гуруҳ: ${r.datasetKey === "dala" ? "Dala" : "Toshkent Invest"}<br/>Номи: ${r.id}`;
     }
 
     function draw(csvRows, kmlRows) {
       layerCsv.clearLayers();
       layerKml.clearLayers();
-      layerOverlap.clearLayers();
-      markersCsv.clearLayers();
+      layerErrors.clearLayers();
       markersKml.clearLayers();
-      markersOverlap.clearLayers();
       fitGroup.clearLayers();
 
-      const csvMap = new Map(csvRows.map(r => [r.id, r]));
-      const kmlMap = new Map(kmlRows.map(r => [r.id, r]));
-
-      const overlapIds = new Set([...csvMap.keys()].filter(id => kmlMap.has(id)));
-      const onlyCsv = csvRows.filter(r => !kmlMap.has(r.id));
-      const onlyKml = kmlRows.filter(r => !csvMap.has(r.id));
-
+      const { csvToKml } = buildRelations(csvRows, kmlRows);
+      const usedKml = new Set();
       const overlapDistances = [];
+      let matchedCount = 0;
+      let warningCount = 0;
+      let errorCount = 0;
 
-      for (const r of onlyCsv) {
-        const poly = L.polygon(r.coords, { color: "#2563eb", weight: 2, fillOpacity: 0.2 }).bindPopup(popupCsv(r));
-        poly.addTo(layerCsv);
-        fitGroup.addLayer(poly);
+      for (const csv of csvRows) {
+        const rel = csvToKml.get(csv.id);
+        const distM = rel ? rel.distanceM : null;
+        const status = rel ? classifyDistance(distM) : "csv_only";
+        const baseColor = GROUP_COLORS[csv.datasetKey] || "#16a34a";
+        const color = baseColor;
+        const marker = L.circleMarker(csv.centroid, {
+          pane: PANE_POINT_MARKERS,
+          radius: 8,
+          color,
+          weight: 2,
+          fillColor: color,
+          fillOpacity: 0.75
+        }).bindPopup(
+          `${popupCsv(csv)}<br/>Status: <b>${status}</b>` +
+          (distM != null ? `<br/>Nearest KML masofa: ${distM.toFixed(0)} м` : "")
+        );
+        marker.addTo(layerCsv);
+        fitGroup.addLayer(marker);
 
-        // Add marker at centroid
-        const centroid = getCentroid(r.coords);
-        const marker = L.marker(centroid, {
-          icon: L.divIcon({
-            className: 'custom-marker',
-            html: '<div style="background:#2563eb;color:white;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;">C</div>',
-            iconSize: [24, 24],
-            iconAnchor: [12, 12]
-          })
-        }).bindPopup(popupCsv(r));
-        marker.addTo(markersCsv);
+        if (!rel) continue;
+        usedKml.add(rel.kml.id);
+        overlapDistances.push(distM);
+        if (status === "matched") matchedCount += 1;
+        if (status === "warning") warningCount += 1;
+        if (status === "error") errorCount += 1;
+
+        if (status === "error" || !rel.inside) {
+          L.circleMarker(csv.centroid, {
+            pane: PANE_POINT_MARKERS,
+            radius: 9,
+            color: "#b91c1c",
+            weight: 2,
+            fillOpacity: 0
+          }).bindPopup(
+            `<b>QA issue</b><br/>CSV: ${csv.tuman} #${csv.number}<br/>KML: ${rel.kml.id}<br/>` +
+            `Masofa: ${distM.toFixed(0)} м<br/>Ичкарисида: ${rel.inside ? "ҳа" : "йўқ"}`
+          ).addTo(layerErrors);
+        }
       }
-      for (const r of onlyKml) {
-        const poly = L.polygon(r.coords, { color: "#16a34a", weight: 2, fillOpacity: 0.2 }).bindPopup(popupKml(r));
+
+      for (const kml of kmlRows) {
+        const related = Array.from(csvToKml.values()).find((x) => x.kml.id === kml.id);
+        const isUnmatched = !related;
+        const polyColor = isUnmatched ? "#b91c1c" : (GROUP_COLORS[kml.datasetKey] || "#16a34a");
+        const poly = L.polygon(kml.coords, {
+          pane: PANE_KML_POLYGONS,
+          interactive: false,
+          bubblingMouseEvents: true,
+          color: polyColor,
+          weight: 2,
+          fillOpacity: isUnmatched ? 0.05 : 0.12
+        });
         poly.addTo(layerKml);
         fitGroup.addLayer(poly);
-
-        // Add marker at centroid
-        const centroid = getCentroid(r.coords);
-        const marker = L.marker(centroid, {
-          icon: L.divIcon({
-            className: 'custom-marker',
-            html: '<div style="background:#16a34a;color:white;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;">K</div>',
-            iconSize: [24, 24],
-            iconAnchor: [12, 12]
-          })
-        }).bindPopup(popupKml(r));
-        marker.addTo(markersKml);
+        L.circleMarker(kml.centroid, {
+          pane: PANE_POINT_MARKERS,
+          radius: 6,
+          color: GROUP_COLORS[kml.datasetKey] || "#16a34a",
+          fillColor: GROUP_COLORS[kml.datasetKey] || "#16a34a",
+          fillOpacity: 0.65,
+          weight: 2
+        }).bindPopup(popupKml(kml)).addTo(markersKml);
+        if (isUnmatched) {
+          L.circleMarker(kml.centroid, {
+            pane: PANE_POINT_MARKERS,
+            radius: 7,
+            color: "#b91c1c",
+            fillColor: "#b91c1c",
+            fillOpacity: 0.85,
+            weight: 2
+          }).bindPopup(popupKml(kml)).addTo(layerErrors);
+        }
       }
-      for (const id of overlapIds) {
-        const csv = csvMap.get(id);
-        const kml = kmlMap.get(id);
-        const centroidCsv = getCentroid(csv.coords);
-        const centroidKml = getCentroid(kml.coords);
-        const distM = haversineMeters(centroidCsv, centroidKml);
-        overlapDistances.push(distM);
 
-        const csvPoly = L.polygon(csv.coords, { color: "#ea580c", weight: 2, dashArray: "4,4", fillOpacity: 0.08 })
-          .bindPopup(
-            `<b>Иккала манбада бор</b><br/>ИД: ${id}<br/>Манзил (CSV): ${csv.manzil || "-"}<br/>` +
-            `Центроидлар масофаси: ${distM.toFixed(0)} м`
-          );
-        const kmlPoly = L.polygon(kml.coords, { color: "#ea580c", weight: 2, fillOpacity: 0.15 })
-          .bindPopup(
-            `<b>Иккала манбада бор</b><br/>ИД: ${id}<br/>Центроидлар масофаси: ${distM.toFixed(0)} м`
-          );
-        csvPoly.addTo(layerOverlap);
-        kmlPoly.addTo(layerOverlap);
-        fitGroup.addLayer(csvPoly);
-
-        // Add marker at centroid of CSV polygon
-        const marker = L.marker(centroidCsv, {
-          icon: L.divIcon({
-            className: 'custom-marker',
-            html: '<div style="background:#ea580c;color:white;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;">B</div>',
-            iconSize: [24, 24],
-            iconAnchor: [12, 12]
-          })
-        }).bindPopup(
-          `<b>Иккала манбада бор</b><br/>ИД: ${id}<br/>Манзил (CSV): ${csv.manzil || "-"}<br/>` +
-          `Центроидлар масофаси: ${distM.toFixed(0)} м`
-        );
-        marker.addTo(markersOverlap);
-      }
+      const onlyCsv = csvRows.filter((r) => !csvToKml.get(r.id));
+      const onlyKml = kmlRows.filter((r) => !usedKml.has(r.id));
 
       document.getElementById("jamiCsv").textContent = String(csvRows.length);
       document.getElementById("jamiKml").textContent = String(kmlRows.length);
-      document.getElementById("ikkalasida").textContent = String(overlapIds.size);
+      document.getElementById("ikkalasida").textContent = String(matchedCount);
+      document.getElementById("warningCount").textContent = String(warningCount);
+      document.getElementById("errorCount").textContent = String(errorCount);
       document.getElementById("faqatCsv").textContent = String(onlyCsv.length);
       document.getElementById("faqatKml").textContent = String(onlyKml.length);
+      document.getElementById("qaText").textContent =
+        `${errorCount + onlyKml.length} та жой текшириш талаб қилади (distance > ${DIST_WARNING}м ёки polygon mismatch).`;
 
       // Distance stats for matches (centroid-to-centroid)
       if (overlapDistances.length) {
@@ -801,8 +962,9 @@
         document.getElementById("distMax").textContent = "0";
       }
 
-      if (fitGroup.getLayers().length) {
+      if (!didAutoFitOnce && fitGroup.getLayers().length) {
         map.fitBounds(fitGroup.getBounds(), { padding: [20, 20] });
+        didAutoFitOnce = true;
       }
     }
 
@@ -817,13 +979,97 @@
 
     bindLayerToggle("қатлам-csv", layerCsv);
     bindLayerToggle("қатлам-kml", layerKml);
-    bindLayerToggle("қатлам-умумий", layerOverlap);
+    bindLayerToggle("қатлам-xato", layerErrors);
+
+    function bindLayerGroupToggle() {
+      const parent = document.getElementById("қатлам-ҳаммаси");
+      const childIds = ["қатлам-csv", "қатлам-kml", "қатлам-xato"];
+
+      function syncParentState() {
+        const checkedCount = childIds
+          .map((id) => document.getElementById(id).checked)
+          .filter(Boolean).length;
+        parent.indeterminate = checkedCount > 0 && checkedCount < childIds.length;
+        parent.checked = checkedCount === childIds.length;
+      }
+
+      parent.addEventListener("change", () => {
+        parent.indeterminate = false;
+        childIds.forEach((id) => {
+          const el = document.getElementById(id);
+          if (el.checked !== parent.checked) {
+            el.checked = parent.checked;
+            el.dispatchEvent(new Event("change"));
+          }
+        });
+      });
+
+      childIds.forEach((id) => {
+        document.getElementById(id).addEventListener("change", syncParentState);
+      });
+
+      syncParentState();
+    }
+
+    bindLayerGroupToggle();
+
+    function parseCsvByMode(text, mode, datasetKey) {
+      return mode === "legacy" ? parseCsvRowsLegacy(text, datasetKey) : parseCsvRows(text, datasetKey);
+    }
+
+    async function ensureDatasetLoaded(key) {
+      const config = DATASETS[key];
+      if (!config) return;
+
+      if (!datasetCache.has(key)) {
+        const fetches = [fetch(config.csvFile), ...config.kmlFiles.map((f) => fetch(f))];
+        const responses = await Promise.all(fetches);
+        if (responses.some((r) => !r.ok)) {
+          throw new Error("Файлларни ўқишда хатолик бор. Сервер орқали очиб кўринг.");
+        }
+        const [csvText, ...kmlTexts] = await Promise.all(responses.map((r) => r.text()));
+        datasetCache.set(key, {
+          csvRows: parseCsvByMode(csvText, config.csvParser, key),
+          kmlRows: kmlTexts.flatMap((kmlText) => parseKml(kmlText, key))
+        });
+      }
+    }
+
+    function getSelectedDatasetKeys() {
+      return Array.from(document.querySelectorAll('input[name="datasetGroup"]:checked')).map((el) => el.value);
+    }
+
+    async function loadSelectedDatasets() {
+      const keys = getSelectedDatasetKeys();
+      await Promise.all(keys.map((k) => ensureDatasetLoaded(k)));
+      allCsvRows = keys.flatMap((k) => (datasetCache.get(k)?.csvRows || []));
+      allKmlRows = keys.flatMap((k) => (datasetCache.get(k)?.kmlRows || []));
+      setupFilterUi(allCsvRows);
+      redrawWithFilters();
+    }
+
+    function bindDatasetUi() {
+      const toggles = Array.from(document.querySelectorAll('input[name="datasetGroup"]'));
+      toggles.forEach((toggle) => {
+        toggle.addEventListener("change", async () => {
+          try {
+            setError("");
+            await loadSelectedDatasets();
+          } catch (e) {
+            setError(
+              "Маълумот юкланмади.\n" +
+              "Сабаб: " + (e && e.message ? e.message : "номаълум хатолик")
+            );
+          }
+        });
+      });
+    }
 
     // Single toggle for all markers (centroid points)
     const markersCheckbox = document.getElementById("маркерлар");
     markersCheckbox.addEventListener("change", () => {
       const show = markersCheckbox.checked;
-      const markerLayers = [markersCsv, markersKml, markersOverlap];
+        const markerLayers = [layerCsv, markersKml];
       for (const l of markerLayers) {
         const currentlyVisible = map.hasLayer(l);
         if (show && !currentlyVisible) map.addLayer(l);
@@ -893,15 +1139,8 @@
 
     async function init() {
       try {
-        const [csvResp, kmlResp] = await Promise.all([fetch(CSV_FILE), fetch(KML_FILE)]);
-        if (!csvResp.ok || !kmlResp.ok) {
-          throw new Error("Файлларни ўқишда хатолик бор. Сервер орқали очиб кўринг.");
-        }
-        const [csvText, kmlText] = await Promise.all([csvResp.text(), kmlResp.text()]);
-        allCsvRows = parseCsvRows(csvText);
-        allKmlRows = parseKml(kmlText);
-        setupFilterUi(allCsvRows);
-        redrawWithFilters();
+        bindDatasetUi();
+        await loadSelectedDatasets();
       } catch (e) {
         setError(
           "Маълумот юкланмади.\n" +
