@@ -135,6 +135,21 @@
     }
     .қатор { display: flex; align-items: center; gap: 10px; margin: 8px 0; font-size: 14px; }
     .белги { width: 12px; height: 12px; border-radius: 3px; display: inline-block; flex: 0 0 auto; }
+    .kml-legend-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 8px 0;
+      font-size: 13px;
+    }
+    .kml-swatch {
+      width: 22px;
+      height: 22px;
+      border-radius: 5px;
+      flex: 0 0 auto;
+      border: 2px solid #dc2626;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+    }
     .stat {
       margin: 7px 0;
       font-size: 14px;
@@ -309,9 +324,9 @@
       <div class="panel-window-title">Browser / Layers Panel</div>
       <h1 class="сарлавҳа">Харитада солиштириш</h1>
       <p class="изоҳ">
-        Гуруҳ 1: <b>Dala</b> (CSV + 2 та KML), ранги яшил.<br />
-        Гуруҳ 2: <b>Toshkent Invest</b> (CSV + 1 та KML), ранги кўк.<br />
-        Иккаласини бир вақтда ёқиш мумкин.
+        Гуруҳ 1: <b>Dala</b> (CSV + 2 та KML). Гуруҳ 2: <b>Toshkent Invest</b> (CSV + 1 та KML).<br />
+        KML полигонларнинг тўлдириш ва чизиқ ранглари <b>KML файл</b>даги <code>PolyStyle</code> / <code>LineStyle</code> бўйича кўрсатилади.
+        <b>Қизил</b> контур ёки тўлиқ қизил полигон — CSV билан мос келмаган KML.
       </p>
 
       <div class="блок">
@@ -340,14 +355,22 @@
         </div>
         <div class="қатор">
           <input type="checkbox" id="қатлам-kml" checked />
-          <span class="белги" style="background:var(--secondary)"></span>
-          <label for="қатлам-kml">KML полигонлар</label>
+          <span class="белги" style="background:var(--secondary);border:1px solid #dc2626;"></span>
+          <label for="қатлам-kml">KML полигонлар (ранг = файл; қизил = мос эмас)</label>
         </div>
         <div class="қатор">
           <input type="checkbox" id="қатлам-xato" />
           <span class="белги" style="background:#b91c1c"></span>
           <label for="қатлам-xato">Хатолик/мос эмас</label>
         </div>
+      </div>
+
+      <div class="блок" id="kmlStyleLegendBlock" hidden>
+        <div class="section-title">KML файл ранглари</div>
+        <p class="stat-small" style="margin-top:0;">
+          Қизил чегарали квадратлар — KMLда аниқланган услуб ранглари (харитада шу ранглар билан чизилади).
+        </p>
+        <div id="kmlStyleLegendSwatches"></div>
       </div>
 
       <div class="блок">
@@ -657,6 +680,128 @@
         }));
     }
 
+    /** KML color: 8 hex chars AABBGGRR (alpha, blue, green, red). */
+    function kmlAbgrToStyle(lineHexRaw, polyHexRaw, widthRaw) {
+      function parseAbgr(hex) {
+        const h = (hex || "").replace(/^#/, "").trim();
+        if (h.length !== 8) return null;
+        const a = parseInt(h.slice(0, 2), 16);
+        const b = parseInt(h.slice(2, 4), 16);
+        const g = parseInt(h.slice(4, 6), 16);
+        const r = parseInt(h.slice(6, 8), 16);
+        if ([a, b, g, r].some((n) => Number.isNaN(n))) return null;
+        return { r, g, b, a: a / 255 };
+      }
+      function toHex({ r, g, b }) {
+        return "#" + [r, g, b].map((x) => x.toString(16).padStart(2, "0")).join("");
+      }
+      const line = lineHexRaw ? parseAbgr(lineHexRaw) : null;
+      const poly = polyHexRaw ? parseAbgr(polyHexRaw) : null;
+      const stroke = line || poly;
+      if (!stroke) return null;
+      const fillRgb = poly || line;
+      const fillOpacity = poly
+        ? Math.min(0.55, Math.max(0.04, poly.a))
+        : Math.min(0.45, Math.max(0.06, stroke.a * 0.35));
+      let weight = 2;
+      if (widthRaw != null && widthRaw !== "") {
+        const w = parseFloat(widthRaw);
+        if (!Number.isNaN(w)) weight = Math.min(8, Math.max(1, w));
+      }
+      return {
+        color: toHex(stroke),
+        fillColor: toHex(fillRgb),
+        fillOpacity,
+        weight
+      };
+    }
+
+    function elementStyleId(el) {
+      return (
+        el.getAttribute("id") ||
+        el.getAttribute("kml:id") ||
+        el.getAttributeNS("http://www.opengis.net/kml/2.2", "id") ||
+        ""
+      );
+    }
+
+    function findKmlIdElement(root, idRef) {
+      const want = idRef.replace(/^#/, "").trim();
+      function walk(node) {
+        if (node.nodeType !== 1) return null;
+        if (elementStyleId(node) === want) return node;
+        for (const c of node.children) {
+          const hit = walk(c);
+          if (hit) return hit;
+        }
+        return null;
+      }
+      return walk(root);
+    }
+
+    function getFirstStyleChild(el) {
+      const kids = el.children;
+      for (let i = 0; i < kids.length; i++) {
+        const c = kids[i];
+        const ln = c.localName || c.tagName.replace(/^.*:/, "");
+        if (ln === "Style") return c;
+      }
+      return el.getElementsByTagName("Style")[0] || null;
+    }
+
+    function readLinePolyFromStyle(styleEl) {
+      if (!styleEl) return null;
+      const ls = styleEl.getElementsByTagName("LineStyle")[0];
+      const ps = styleEl.getElementsByTagName("PolyStyle")[0];
+      let lineHex = "";
+      let polyHex = "";
+      let width = "";
+      if (ls) {
+        const ce = ls.getElementsByTagName("color")[0];
+        if (ce) lineHex = ce.textContent.trim();
+        const we = ls.getElementsByTagName("width")[0];
+        if (we) width = we.textContent.trim();
+      }
+      if (ps) {
+        const ce = ps.getElementsByTagName("color")[0];
+        if (ce) polyHex = ce.textContent.trim();
+      }
+      return kmlAbgrToStyle(lineHex, polyHex, width);
+    }
+
+    function resolveKmlStyleUrl(xmlDoc, styleUrlText, depth) {
+      if (!styleUrlText || depth > 12) return null;
+      const ref = styleUrlText.trim();
+      const el = findKmlIdElement(xmlDoc.documentElement, ref);
+      if (!el) return null;
+      const ln = el.localName || el.tagName.replace(/^.*:/, "");
+      if (ln === "StyleMap") {
+        const pairs = el.getElementsByTagName("Pair");
+        let chosenUrl = "";
+        for (let i = 0; i < pairs.length; i++) {
+          const pair = pairs[i];
+          const keys = pair.getElementsByTagName("key");
+          const keyText = keys[0] ? keys[0].textContent.trim() : "";
+          const su = pair.getElementsByTagName("styleUrl")[0];
+          const u = su ? su.textContent.trim() : "";
+          if (keyText === "normal" && u) {
+            chosenUrl = u;
+            break;
+          }
+          if (!chosenUrl && u) chosenUrl = u;
+        }
+        return chosenUrl ? resolveKmlStyleUrl(xmlDoc, chosenUrl, depth + 1) : null;
+      }
+      if (ln === "Style") {
+        return readLinePolyFromStyle(el);
+      }
+      if (ln === "CascadingStyle") {
+        const inner = getFirstStyleChild(el);
+        return readLinePolyFromStyle(inner);
+      }
+      return null;
+    }
+
     function parseKml(text, datasetKey = "dala") {
       const xml = new DOMParser().parseFromString(text, "text/xml");
       const placemarks = Array.from(xml.getElementsByTagName("Placemark"));
@@ -666,27 +811,80 @@
         const nameEl = p.getElementsByTagName("name")[0];
         const coordEl = p.getElementsByTagName("coordinates")[0];
         if (!nameEl || !coordEl) continue;
-          const id = nameEl.textContent.trim();
+        const id = nameEl.textContent.trim();
         const coords = coordEl.textContent
           .trim()
           .split(/\s+/)
-          .map(item => {
+          .map((item) => {
             const [lon, lat] = item.split(",");
             return [toNumber(lat), toNumber(lon)];
           })
-            .filter(([lat, lon]) => lat != null && lon != null);
+          .filter(([lat, lon]) => lat != null && lon != null);
 
-        if (coords.length >= 3) {
-          result.push({
-            id,
-            datasetKey,
-            coords,
-            centroid: getCentroid(coords),
-            searchText: String(id).toLowerCase()
-          });
-        }
+        if (coords.length < 3) continue;
+
+        const su = p.getElementsByTagName("styleUrl")[0];
+        const styleUrlText = su ? su.textContent.trim() : "";
+        const kmlStyle = styleUrlText ? resolveKmlStyleUrl(xml, styleUrlText, 0) : null;
+
+        result.push({
+          id,
+          datasetKey,
+          coords,
+          centroid: getCentroid(coords),
+          searchText: String(id).toLowerCase(),
+          kmlStyle
+        });
       }
       return result;
+    }
+
+    function hexToRgba(hex, alpha) {
+      const m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+      if (!m) return `rgba(22, 163, 74, ${alpha})`;
+      return `rgba(${parseInt(m[1], 16)},${parseInt(m[2], 16)},${parseInt(m[3], 16)},${alpha})`;
+    }
+
+    function updateKmlStyleLegend(kmlRows) {
+      const block = document.getElementById("kmlStyleLegendBlock");
+      const host = document.getElementById("kmlStyleLegendSwatches");
+      if (!block || !host) return;
+
+      const seen = new Map();
+      for (const k of kmlRows) {
+        if (!k.kmlStyle) continue;
+        const { color, fillColor, fillOpacity } = k.kmlStyle;
+        const key = `${color}|${fillColor}|${fillOpacity.toFixed(3)}`;
+        if (!seen.has(key)) {
+          seen.set(key, { color, fillColor, fillOpacity, count: 0, sampleId: k.id, group: k.datasetKey });
+        }
+        seen.get(key).count += 1;
+      }
+
+      if (!seen.size) {
+        block.hidden = true;
+        host.innerHTML = "";
+        return;
+      }
+
+      block.hidden = false;
+      host.innerHTML = "";
+      const entries = [...seen.values()].sort((a, b) => b.count - a.count);
+      for (const e of entries) {
+        const row = document.createElement("div");
+        row.className = "kml-legend-row";
+        const sw = document.createElement("span");
+        sw.className = "kml-swatch";
+        sw.title = `Чизиқ: ${e.color}; тўлдириш: ${e.fillColor} (alpha ${e.fillOpacity.toFixed(2)})`;
+        sw.style.background = hexToRgba(e.fillColor, Math.min(1, e.fillOpacity + 0.08));
+        sw.style.boxShadow = `inset 0 0 0 2px ${e.color}`;
+        const label = document.createElement("span");
+        const g = e.group === "dala" ? "Dala" : "Toshkent Invest";
+        label.textContent = `${g}: ${e.count} та · мисол ID ${e.sampleId}`;
+        row.appendChild(sw);
+        row.appendChild(label);
+        host.appendChild(row);
+      }
     }
 
     function pointInPolygon(point, polygon) {
@@ -842,7 +1040,12 @@
     }
 
     function popupKml(r) {
-      return `<b>KML polygon</b><br/>Гуруҳ: ${r.datasetKey === "dala" ? "Dala" : "Toshkent Invest"}<br/>Номи: ${r.id}`;
+      const grp = r.datasetKey === "dala" ? "Dala" : "Toshkent Invest";
+      const st = r.kmlStyle;
+      const styleLine = st
+        ? `<br/>KML ранг: чизиқ <span style="color:${st.color}"><b>${st.color}</b></span>, тўлдириш <span style="color:${st.fillColor}"><b>${st.fillColor}</b></span>`
+        : "<br/>KML ранг: файлда услуб топилмади (гуруҳ ранги).";
+      return `<b>KML polygon</b><br/>Гуруҳ: ${grp}<br/>Номи: ${r.id}${styleLine}`;
     }
 
     function draw(csvRows, kmlRows) {
@@ -903,23 +1106,29 @@
       for (const kml of kmlRows) {
         const related = Array.from(csvToKml.values()).find((x) => x.kml.id === kml.id);
         const isUnmatched = !related;
-        const polyColor = isUnmatched ? "#b91c1c" : (GROUP_COLORS[kml.datasetKey] || "#16a34a");
+        const groupFallback = GROUP_COLORS[kml.datasetKey] || "#16a34a";
+        const st = kml.kmlStyle;
+        const polyOpts = isUnmatched
+          ? { color: "#b91c1c", fillColor: "#b91c1c", weight: 2, fillOpacity: 0.05 }
+          : st
+            ? { color: st.color, fillColor: st.fillColor, weight: st.weight, fillOpacity: st.fillOpacity }
+            : { color: groupFallback, fillColor: groupFallback, weight: 2, fillOpacity: 0.12 };
         const poly = L.polygon(kml.coords, {
           pane: PANE_KML_POLYGONS,
           interactive: false,
           bubblingMouseEvents: true,
-          color: polyColor,
-          weight: 2,
-          fillOpacity: isUnmatched ? 0.05 : 0.12
+          ...polyOpts
         });
         poly.addTo(layerKml);
         fitGroup.addLayer(poly);
+        const markerStroke = isUnmatched ? "#b91c1c" : (st?.color || st?.fillColor || groupFallback);
+        const markerFill = isUnmatched ? "#b91c1c" : (st?.fillColor || markerStroke);
         L.circleMarker(kml.centroid, {
           pane: PANE_POINT_MARKERS,
           radius: 6,
-          color: GROUP_COLORS[kml.datasetKey] || "#16a34a",
-          fillColor: GROUP_COLORS[kml.datasetKey] || "#16a34a",
-          fillOpacity: 0.65,
+          color: markerStroke,
+          fillColor: markerFill,
+          fillOpacity: isUnmatched ? 0.85 : 0.65,
           weight: 2
         }).bindPopup(popupKml(kml)).addTo(markersKml);
         if (isUnmatched) {
@@ -1044,6 +1253,7 @@
       await Promise.all(keys.map((k) => ensureDatasetLoaded(k)));
       allCsvRows = keys.flatMap((k) => (datasetCache.get(k)?.csvRows || []));
       allKmlRows = keys.flatMap((k) => (datasetCache.get(k)?.kmlRows || []));
+      updateKmlStyleLegend(allKmlRows);
       setupFilterUi(allCsvRows);
       redrawWithFilters();
     }
